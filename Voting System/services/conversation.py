@@ -86,7 +86,7 @@ def process_chat_message(session_id, user_message, location="General (No specifi
         if client:
             context = f"{SYSTEM_PROMPT}\n\nUSER'S LOCATION: {location}\nUSER'S LANGUAGE: {language}\n\nPlease tailor your response regarding deadlines, timelines, and local rules to the user's specific location if applicable. CRITICAL: You MUST answer the user entirely in the specified USER'S LANGUAGE ({language}).\n\nUser Message: {user_message}"
             response = client.models.generate_content(
-                model='gemini-1.5-flash',
+                model='gemini-2.5-flash',
                 contents=context
             )
             response_text = response.text
