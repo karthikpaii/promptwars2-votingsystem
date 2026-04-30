@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="chat-header">
+            <div class="avatar">
+                <svg xmlns="http://www.w3.org/2000/0.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
+            </div>
+            <div>
+                <h1>Election Assistant</h1>
+                <p>Secure & Verified Information</p>
+            </div>
+        </div>
+
+        <div class="chat-messages" id="chat-messages">
+            <div class="message assistant-message">
+                <p>Hi! I'm your Election Assistant. I can guide you through the election process step-by-step.</p>
+                <p>I can help you understand:</p>
+                <ul>
+                    <li>How to register to vote</li>
+                    <li>Election timelines</li>
+                    <li>The voting process</li>
+                    <li>Rules and eligibility</li>
+                </ul>
+                <p>What would you like to learn about today?</p>
+            </div>
+        </div>
+
+        <div class="quick-replies" id="quick-replies">
+            <button class="quick-reply-btn">Register to Vote</button>
+            <button class="quick-reply-btn">Check Eligibility</button>
+            <button class="quick-reply-btn">Voting Process</button>
+            <button class="quick-reply-btn">Election Timelines</button>
+        </div>
+
+        <form class="chat-input-area" id="chat-form">
+            <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off">
+            <button type="submit" id="send-btn">
+                <svg xmlns="http://www.w3.org/2000/0.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+            </button>
+        </form>
+        
+        <div class="security-badge">
+            <svg xmlns="http://www.w3.org/2000/0.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            Never share sensitive data (SSN, Aadhaar, passwords)
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
