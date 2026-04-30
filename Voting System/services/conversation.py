@@ -86,7 +86,7 @@ def process_chat_message(session_id, user_message, location="General (No specifi
         if client:
             context = f"{SYSTEM_PROMPT}\n\nUSER'S LOCATION: {location}\nUSER'S LANGUAGE: {language}\n\nPlease tailor your response regarding deadlines, timelines, and local rules to the user's specific location if applicable. CRITICAL: You MUST answer the user entirely in the specified USER'S LANGUAGE ({language}).\n\nUser Message: {user_message}"
             response = client.models.generate_content(
-                model='gemini-2.5-flash',
+                model='gemini-2.0-flash-lite',
                 contents=context
             )
             response_text = response.text
@@ -94,11 +94,7 @@ def process_chat_message(session_id, user_message, location="General (No specifi
             response_text = fallback_logic(user_message) + "\n\n*(Using local logic - set GEMINI_API_KEY for full AI power)*"
     except Exception as e:
         print(f"Gemini Error: {e}")
-        error_str = str(e)
-        if "429" in error_str or "RESOURCE_EXHAUSTED" in error_str or "quota" in error_str.lower():
-            response_text = f"WARNING: The AI API Key has reached its daily rate limit (Quota Exceeded). I cannot translate to {language} or process complex requests right now. Please wait or use a different API key.\n\n*(Fallback Mode Active)*\n\n" + fallback_logic(user_message)
-        else:
-            response_text = f"WARNING: An AI system error occurred. Falling back to basic logic.\n\n" + fallback_logic(user_message)
+        response_text = fallback_logic(user_message)
 
     # 3. Database Write (Telemetry/Context)
     save_chat_message(session_id, user_message, response_text)
