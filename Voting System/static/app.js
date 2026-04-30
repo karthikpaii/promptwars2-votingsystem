@@ -238,6 +238,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (userLanguage === "Hindi") {
             utterance.lang = 'hi-IN';
             selectedVoice = voices.find(voice => voice.lang.includes('hi'));
+        } else if (userLanguage === "Kannada") {
+            utterance.lang = 'kn-IN';
+            selectedVoice = voices.find(voice => voice.lang.includes('kn'));
         } else if (userLanguage === "Bengali") {
             utterance.lang = 'bn-IN';
             selectedVoice = voices.find(voice => voice.lang.includes('bn'));
