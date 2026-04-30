@@ -56,7 +56,7 @@ def fallback_logic(query):
         return "Step 1: In most places, you must be at least 18 years old and a citizen to vote.\nDo you want to continue?"
     return "Hi! I can guide you through the election process. What would you like to learn?"
 
-def process_chat_message(session_id, user_message, location="General (No specific region)"):
+def process_chat_message(session_id, user_message, location="General (No specific region)", language="English"):
     # 1. Security Check
     has_pii, warning_msg = scan_for_pii(user_message)
     if has_pii:
@@ -66,7 +66,7 @@ def process_chat_message(session_id, user_message, location="General (No specifi
     response_text = ""
     try:
         if client:
-            context = f"{SYSTEM_PROMPT}\n\nUSER'S LOCATION: {location}\n\nPlease tailor your response regarding deadlines, timelines, and local rules to the user's specific location provided above if applicable.\n\nUser Message: {user_message}"
+            context = f"{SYSTEM_PROMPT}\n\nUSER'S LOCATION: {location}\nUSER'S LANGUAGE: {language}\n\nPlease tailor your response regarding deadlines, timelines, and local rules to the user's specific location if applicable. CRITICAL: You MUST answer the user entirely in the specified USER'S LANGUAGE ({language}).\n\nUser Message: {user_message}"
             response = client.models.generate_content(
                 model='gemini-1.5-flash',
                 contents=context

@@ -25,12 +25,13 @@ def chat():
     user_query = data.get("message", "").strip()
     session_id = data.get("session_id", str(uuid.uuid4()))
     location = data.get("location", "General (No specific region)")
+    language = data.get("language", "English")
     
     if not user_query:
         return jsonify({"status": "error", "message": "Empty query"}), 400
 
     # Delegate to the conversation service
-    response_text, is_warning = process_chat_message(session_id, user_query, location)
+    response_text, is_warning = process_chat_message(session_id, user_query, location, language)
     
     if is_warning:
         # We can prepend a flag or handle it gracefully on the client

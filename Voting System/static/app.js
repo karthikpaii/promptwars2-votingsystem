@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const userLocation = document.getElementById('user-location').value;
+            const userLanguage = document.getElementById('user-language').value;
             
             const response = await fetch('/api/chat', {
                 method: 'POST',
@@ -75,7 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ 
                     message: message, 
                     session_id: sessionId,
-                    location: userLocation
+                    location: userLocation,
+                    language: userLanguage
                 })
             });
 
