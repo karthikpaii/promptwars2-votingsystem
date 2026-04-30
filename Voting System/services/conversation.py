@@ -67,9 +67,15 @@ def process_chat_message(session_id, user_message, location="General (No specifi
     try:
         if client:
             context = f"{SYSTEM_PROMPT}\n\nUSER'S LOCATION: {location}\n\nPlease tailor your response regarding deadlines, timelines, and local rules to the user's specific location provided above if applicable.\n\nUser Message: {user_message}"
+            # Enable Google Search Grounding for real-time election data
+            from google.genai import types
+            
             response = client.models.generate_content(
                 model='gemini-1.5-flash',
-                contents=context
+                contents=context,
+                config=types.GenerateContentConfig(
+                    tools=[{"google_search": {}}]
+                )
             )
             response_text = response.text
         else:
