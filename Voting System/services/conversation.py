@@ -56,17 +56,39 @@ STYLE:
 * After explaining a step, always ask: "Do you want to continue?"
 """
 
-def fallback_logic(query):
+def fallback_logic(query, language="English"):
     query = query.lower()
+    
+    # Translations for common responses
+    translations = {
+        "Hindi": {
+            "default": "नमस्ते! मैं चुनाव प्रक्रिया में आपका मार्गदर्शन कर सकता हूँ। आप आज क्या सीखना चाहेंगे?",
+            "register": "चरण 1: अपने क्षेत्र के आधार पर मतदान करने के लिए अपनी पात्रता जांचें।\nक्या आप जारी रखना चाहते हैं?",
+            "timeline": "चुनाव की समयसीमा अलग-अलग होती है। कृपया मुझे अपना देश या राज्य बताएं।\nक्या आप जारी रखना चाहते हैं?",
+            "process": "चरण 1: मतदान के दिन से पहले, अपने मतदान केंद्र का स्थान ऑनलाइन सत्यापित करें।\nक्या आप जारी रखना चाहते हैं?",
+            "eligible": "चरण 1: अधिकांश स्थानों पर, मतदान करने के लिए आपकी आयु कम से कम 18 वर्ष होनी चाहिए।\nक्या आप जारी रखना चाहते हैं?"
+        },
+        "Kannada": {
+            "default": "ನಮಸ್ಕಾರ! ಚುನಾವಣಾ ಪ್ರಕ್ರಿಯೆಯಲ್ಲಿ ನಾನು ನಿಮಗೆ ಮಾರ್ಗದರ್ಶನ ನೀಡಬಲ್ಲೆ. ನೀವು ಇಂದು ಏನನ್ನು ಕಲಿಯಲು ಬಯಸುತ್ತೀರಿ?",
+            "register": "ಹಂತ 1: ನಿಮ್ಮ ಪ್ರದೇಶದ ಆಧಾರದ ಮೇಲೆ ಮತದಾನ ಮಾಡಲು ನಿಮ್ಮ ಅರ್ಹತೆಯನ್ನು ಪರಿಶೀಲಿಸಿ.\nನೀವು ಮುಂದುವರಿಸಲು ಬಯಸುವಿರಾ?",
+            "timeline": "ಚುನಾವಣಾ ಸಮಯದ ಮಿತಿಗಳು ಬದಲಾಗುತ್ತವೆ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ದೇಶ ಅಥವಾ ರಾಜ್ಯವನ್ನು ನನಗೆ ತಿಳಿಸಿ.\nನೀವು ಮುಂದುವರಿಸಲು ಬಯಸುವಿರಾ?",
+            "process": "ಹಂತ 1: ಮತದಾನದ ದಿನದ ಮೊದಲು, ನಿಮ್ಮ ಮತದಾನ ಕೇಂದ್ರದ ಸ್ಥಳವನ್ನು ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ಪರಿಶೀಲಿಸಿ.\nನೀವು ಮುಂದುವರಿಸಲು ಬಯಸುವಿರಾ?",
+            "eligible": "ಹಂತ 1: ಹೆಚ್ಚಿನ ಸ್ಥಳಗಳಲ್ಲಿ, ಮತದಾನ ಮಾಡಲು ನಿಮಗೆ ಕನಿಷ್ಠ 18 ವರ್ಷ ವಯಸ್ಸಾಗಿರಬೇಕು.\nನೀವು ಮುಂದುವರಿಸಲು ಬಯಸುವಿರಾ?"
+        }
+    }
+
+    lang_data = translations.get(language)
+    
     if "register" in query:
-        return "Step 1: Check your eligibility to vote based on your region.\nDo you want to continue?"
+        return lang_data["register"] if lang_data else "Step 1: Check your eligibility to vote based on your region.\nDo you want to continue?"
     if "timeline" in query or "date" in query or "when" in query:
-        return "Election timelines vary by country. Please tell me your country or state so I can give you the exact dates.\nDo you want to continue?"
+        return lang_data["timeline"] if lang_data else "Election timelines vary by country. Please tell me your country or state.\nDo you want to continue?"
     if "process" in query or "step" in query or "how to vote" in query:
-        return "Step 1: Before voting day, verify your polling station location online.\nDo you want to continue?"
+        return lang_data["process"] if lang_data else "Step 1: Before voting day, verify your polling station location online.\nDo you want to continue?"
     if "rule" in query or "eligibility" in query or "eligible" in query:
-        return "Step 1: In most places, you must be at least 18 years old and a citizen to vote.\nDo you want to continue?"
-    return "Hi! I can guide you through the election process. What would you like to learn?"
+        return lang_data["eligible"] if lang_data else "Step 1: In most places, you must be at least 18 years old and a citizen to vote.\nDo you want to continue?"
+    
+    return lang_data["default"] if lang_data else "Hi! I can guide you through the election process. What would you like to learn?"
 
 def process_chat_message(session_id, user_message, location="General (No specific region)", language="English"):
     # 1. Security Check
@@ -91,10 +113,10 @@ def process_chat_message(session_id, user_message, location="General (No specifi
             )
             response_text = response.text
         else:
-            response_text = fallback_logic(user_message) + "\n\n*(Using local logic - set GEMINI_API_KEY for full AI power)*"
+            response_text = fallback_logic(user_message, language) + "\n\n*(Using local logic - set GEMINI_API_KEY for full AI power)*"
     except Exception as e:
         print(f"Gemini Error: {e}")
-        response_text = fallback_logic(user_message)
+        response_text = fallback_logic(user_message, language)
 
     # 3. Database Write (Telemetry/Context)
     save_chat_message(session_id, user_message, response_text)
