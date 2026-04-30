@@ -37,12 +37,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const typingId = showTypingIndicator();
 
         try {
+            const userLocation = document.getElementById('user-location').value;
+            
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ message: message, session_id: sessionId })
+                body: JSON.stringify({ 
+                    message: message, 
+                    session_id: sessionId,
+                    location: userLocation
+                })
             });
 
             const data = await response.json();
@@ -54,6 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Check if it's a warning message
                 const isWarning = data.message.startsWith('WARNING:');
                 addMessage(data.message, isWarning ? 'warning' : 'assistant');
+                
+                // Show timeline if the topic is timeline/dates
+                if (message.toLowerCase().includes('timeline') || message.toLowerCase().includes('date') || data.message.toLowerCase().includes('timeline')) {
+                    document.getElementById('timeline-container').classList.remove('hidden');
+                }
             } else {
                 addMessage("Sorry, I encountered an error. Please try again.", 'warning');
             }

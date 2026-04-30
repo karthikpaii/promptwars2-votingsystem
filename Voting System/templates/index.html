@@ -17,9 +17,60 @@
                 <h1>Election Assistant</h1>
                 <p>Secure & Verified Information</p>
             </div>
+            <div class="location-selector" style="margin-left: auto;">
+                <select id="user-location" style="padding: 6px 12px; border-radius: 6px; border: 1px solid #cbd5e1; font-family: inherit; font-size: 0.85rem; outline: none;">
+                    <option value="General (No specific region)">Select Your Region...</option>
+                    <option value="California, USA">California, USA</option>
+                    <option value="Texas, USA">Texas, USA</option>
+                    <option value="New York, USA">New York, USA</option>
+                    <option value="India">India</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                </select>
+            </div>
         </div>
 
-        <div class="chat-messages" id="chat-messages">
+        <div class="main-content">
+            <!-- Timeline View (Hidden by default, shown when user asks for dates) -->
+            <div class="timeline-container hidden" id="timeline-container">
+                <h2>General Election Timeline</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Phase 1: Voter Registration</h3>
+                            <p class="date">Deadline: Varies by region (Check local laws)</p>
+                            <p>Verify eligibility and register to vote.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Phase 2: Preparation</h3>
+                            <p class="date">1-2 Weeks Before Election Day</p>
+                            <p>Check polling location and review the ballot.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Phase 3: Election Day</h3>
+                            <p class="date">Designated Election Date</p>
+                            <p>Go to the polling station and cast your vote.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h3>Phase 4: Results Announcement</h3>
+                            <p class="date">After Polls Close</p>
+                            <p>Votes are counted and results are certified.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-wrapper" id="chat-wrapper">
+                <div class="chat-messages" id="chat-messages">
             <div class="message assistant-message">
                 <p>Hi! I'm your Election Assistant. I can guide you through the election process step-by-step.</p>
                 <p>I can help you understand:</p>
@@ -38,6 +89,10 @@
             <button class="quick-reply-btn">Check Eligibility</button>
             <button class="quick-reply-btn">Voting Process</button>
             <button class="quick-reply-btn">Election Timelines</button>
+        </div>
+
+                </div>
+            </div>
         </div>
 
         <form class="chat-input-area" id="chat-form">
