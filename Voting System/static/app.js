@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const userLocation = document.getElementById('user-location').value;
-            const userLanguage = document.getElementById('user-language').value;
+            const userLanguage = document.getElementById('user-language') ? document.getElementById('user-language').value : "English";
             
             const response = await fetch('/api/chat', {
                 method: 'POST',
@@ -230,10 +230,32 @@ document.addEventListener('DOMContentLoaded', () => {
         utterance.rate = 0.9; // Slightly slower for better comprehension
         utterance.pitch = 1;
         
-        // Try to use a natural English voice if available
+        // Select voice based on user language
+        const userLanguage = document.getElementById('user-language') ? document.getElementById('user-language').value : "English";
         const voices = window.speechSynthesis.getVoices();
-        const englishVoice = voices.find(voice => voice.lang.includes('en-') && voice.name.includes('Natural'));
-        if(englishVoice) utterance.voice = englishVoice;
+        let selectedVoice = null;
+
+        if (userLanguage === "Hindi") {
+            utterance.lang = 'hi-IN';
+            selectedVoice = voices.find(voice => voice.lang.includes('hi'));
+        } else if (userLanguage === "Bengali") {
+            utterance.lang = 'bn-IN';
+            selectedVoice = voices.find(voice => voice.lang.includes('bn'));
+        } else if (userLanguage === "Telugu") {
+            utterance.lang = 'te-IN';
+            selectedVoice = voices.find(voice => voice.lang.includes('te'));
+        } else if (userLanguage === "Marathi") {
+            utterance.lang = 'mr-IN';
+            selectedVoice = voices.find(voice => voice.lang.includes('mr'));
+        } else if (userLanguage === "Tamil") {
+            utterance.lang = 'ta-IN';
+            selectedVoice = voices.find(voice => voice.lang.includes('ta'));
+        } else {
+            utterance.lang = 'en-US';
+            selectedVoice = voices.find(voice => voice.lang.includes('en-') && voice.name.includes('Natural')) || voices.find(voice => voice.lang.includes('en-'));
+        }
+        
+        if(selectedVoice) utterance.voice = selectedVoice;
 
         window.speechSynthesis.speak(utterance);
     }
