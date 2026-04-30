@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = chatInput.value.trim();
         if (text) {
             handleUserMessage(text);
-            chatInput.value = '';
         }
     });
 
@@ -48,9 +47,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function handleUserMessage(message) {
+        if (!message) return;
+
+        // Disable input to prevent double submission
+        chatInput.disabled = true;
+        const sendBtn = document.getElementById('send-btn');
+        if(sendBtn) {
+            sendBtn.disabled = true;
+            sendBtn.style.opacity = '0.5';
+        }
+
         // Add user message to UI
         addMessage(message, 'user');
-        
+        chatInput.value = '';
+
         // Show typing indicator
         const typingId = showTypingIndicator();
 
@@ -93,6 +103,15 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             removeTypingIndicator(typingId);
             addMessage("Network error. Please check your connection.", 'warning');
+            speakText("Network error. Please check your connection.");
+        } finally {
+            // Re-enable input
+            chatInput.disabled = false;
+            if(sendBtn) {
+                sendBtn.disabled = false;
+                sendBtn.style.opacity = '1';
+            }
+            chatInput.focus();
         }
     }
 
