@@ -4,6 +4,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatMessages = document.getElementById('chat-messages');
     const quickReplies = document.querySelectorAll('.quick-reply-btn');
 
+    // Voice Guidance State
+    let voiceEnabled = false;
+    const voiceToggleBtn = document.getElementById('voice-toggle-btn');
+    const voiceIcon = document.getElementById('voice-icon');
+
+    voiceToggleBtn.addEventListener('click', () => {
+        voiceEnabled = !voiceEnabled;
+        if (voiceEnabled) {
+            voiceToggleBtn.style.background = '#2563eb'; // Blue when active
+            voiceToggleBtn.setAttribute('aria-pressed', 'true');
+            speakText("Voice guidance enabled. I will read my answers to you.");
+        } else {
+            voiceToggleBtn.style.background = 'rgba(255, 255, 255, 0.2)';
+            voiceToggleBtn.setAttribute('aria-pressed', 'false');
+            window.speechSynthesis.cancel(); // Stop speaking if turned off
+        }
+    });
+
     // Handle Quick Replies
     quickReplies.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -61,12 +79,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isWarning = data.message.startsWith('WARNING:');
                 addMessage(data.message, isWarning ? 'warning' : 'assistant');
                 
+                // Speak the message if voice is enabled
+                speakText(data.message);
+                
                 // Show timeline if the topic is timeline/dates
                 if (message.toLowerCase().includes('timeline') || message.toLowerCase().includes('date') || data.message.toLowerCase().includes('timeline')) {
                     document.getElementById('timeline-container').classList.remove('hidden');
                 }
             } else {
                 addMessage("Sorry, I encountered an error. Please try again.", 'warning');
+                speakText("Sorry, I encountered an error. Please try again.");
             }
         } catch (error) {
             removeTypingIndicator(typingId);
@@ -169,5 +191,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function scrollToBottom() {
         chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Text to Speech Function
+    function speakText(text) {
+        if (!voiceEnabled || !('speechSynthesis' in window)) return;
+        
+        // Cancel any ongoing speech
+        window.speechSynthesis.cancel();
+        
+        // Strip markdown and HTML for cleaner speech
+        const cleanText = text.replace(/\*\*(.*?)\*\*/g, '$1')
+                             .replace(/<[^>]*>?/gm, '')
+                             .replace(/Step \d+:/g, (match) => match + " "); 
+
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+        utterance.rate = 0.9; // Slightly slower for better comprehension
+        utterance.pitch = 1;
+        
+        // Try to use a natural English voice if available
+        const voices = window.speechSynthesis.getVoices();
+        const englishVoice = voices.find(voice => voice.lang.includes('en-') && voice.name.includes('Natural'));
+        if(englishVoice) utterance.voice = englishVoice;
+
+        window.speechSynthesis.speak(utterance);
     }
 });

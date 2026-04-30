@@ -12,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-size: 18px; /* Accessibility: Larger base font */
 }
 
 .container {
@@ -137,13 +138,13 @@ body {
 }
 
 .chat-header h1 {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.4rem; /* Accessibility: Larger header */
+    font-weight: 700;
 }
 
 .chat-header p {
-    font-size: 0.8rem;
-    opacity: 0.8;
+    font-size: 1rem; /* Accessibility */
+    opacity: 0.9;
 }
 
 .chat-messages {
@@ -156,11 +157,11 @@ body {
 }
 
 .message {
-    max-width: 80%;
-    padding: 12px 16px;
+    max-width: 85%;
+    padding: 16px 20px; /* Accessibility: Larger padding */
     border-radius: 18px;
-    font-size: 0.95rem;
-    line-height: 1.4;
+    font-size: 1.1rem; /* Accessibility: Larger message font */
+    line-height: 1.5;
     animation: fadeIn 0.3s ease-in-out;
 }
 
@@ -205,11 +206,12 @@ body {
 
 .quick-reply-btn {
     background: white;
-    border: 1px solid #cbd5e1;
-    color: #475569;
-    padding: 8px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    border: 2px solid #cbd5e1; /* Thicker border for visibility */
+    color: #334155;
+    padding: 12px 18px; /* Larger click target */
+    border-radius: 24px;
+    font-size: 1.05rem; /* Larger font */
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.2s;
     font-family: inherit;
@@ -230,10 +232,10 @@ body {
 
 #chat-input {
     flex-grow: 1;
-    padding: 12px 16px;
-    border: 1px solid #cbd5e1;
-    border-radius: 24px;
-    font-size: 0.95rem;
+    padding: 16px 20px; /* Larger padding */
+    border: 2px solid #cbd5e1; /* Thicker border */
+    border-radius: 28px;
+    font-size: 1.1rem; /* Larger font */
     font-family: inherit;
     outline: none;
     transition: border-color 0.2s;
@@ -247,8 +249,8 @@ body {
     background: #2563eb;
     color: white;
     border: none;
-    width: 44px;
-    height: 44px;
+    width: 56px; /* Larger button */
+    height: 56px; /* Larger button */
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -263,14 +265,15 @@ body {
 
 .security-badge {
     background: #f8fafc;
-    padding: 10px;
+    padding: 15px; /* Larger padding */
     text-align: center;
-    font-size: 0.75rem;
-    color: #64748b;
+    font-size: 0.95rem; /* Larger font */
+    font-weight: 500;
+    color: #475569;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     border-top: 1px solid #e2e8f0;
 }
 

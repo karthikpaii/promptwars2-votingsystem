@@ -18,7 +18,10 @@
                 <p>Secure & Verified Information</p>
             </div>
             <div class="header-actions" style="margin-left: auto; display: flex; gap: 10px; align-items: center;">
-                <select id="user-location" style="padding: 6px 12px; border-radius: 6px; border: 1px solid #cbd5e1; font-family: inherit; font-size: 0.85rem; outline: none;">
+                <button id="voice-toggle-btn" title="Enable Voice Guidance" aria-pressed="false" style="background: rgba(255, 255, 255, 0.2); border: none; color: white; padding: 10px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;">
+                    <svg id="voice-icon" xmlns="http://www.w3.org/2000/0.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-volume-2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                </button>
+                <select id="user-location" style="padding: 10px 14px; border-radius: 6px; border: 1px solid #cbd5e1; font-family: inherit; font-size: 0.95rem; outline: none;">
                     <option value="General (No specific region)">Select Your Region...</option>
                     <option value="California, USA">California, USA</option>
                     <option value="Texas, USA">Texas, USA</option>
