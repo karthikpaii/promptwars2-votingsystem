@@ -17,7 +17,7 @@
                 <h1>Election Assistant</h1>
                 <p>Secure & Verified Information</p>
             </div>
-            <div class="location-selector" style="margin-left: auto;">
+            <div class="header-actions" style="margin-left: auto; display: flex; gap: 10px; align-items: center;">
                 <select id="user-location" style="padding: 6px 12px; border-radius: 6px; border: 1px solid #cbd5e1; font-family: inherit; font-size: 0.85rem; outline: none;">
                     <option value="General (No specific region)">Select Your Region...</option>
                     <option value="California, USA">California, USA</option>
@@ -26,6 +26,26 @@
                     <option value="India">India</option>
                     <option value="United Kingdom">United Kingdom</option>
                 </select>
+                <button id="notify-btn" class="notify-btn" style="background: white; border: 1px solid #cbd5e1; color: #475569; padding: 6px 12px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 5px; font-family: inherit; font-size: 0.85rem; transition: all 0.2s;">
+                    <svg xmlns="http://www.w3.org/2000/0.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                    Get Alerts
+                </button>
+            </div>
+        </div>
+
+        <!-- Notification Modal (Hidden by default) -->
+        <div id="notify-modal" class="modal hidden" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; z-index: 1000;">
+            <div class="modal-content" style="background: white; padding: 25px; border-radius: 12px; width: 90%; max-width: 350px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+                <h3 style="margin-bottom: 10px; color: #1e293b;">Election Reminders</h3>
+                <p style="font-size: 0.85rem; color: #475569; margin-bottom: 15px;">Never miss a deadline. Get email alerts for voter registration and election days in your region.</p>
+                <form id="notify-form">
+                    <input type="email" id="notify-email" placeholder="Enter your email" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
+                    <div style="display: flex; gap: 10px; justify-content: center;">
+                        <button type="button" id="close-modal-btn" style="padding: 8px 15px; border: 1px solid #cbd5e1; background: white; border-radius: 6px; cursor: pointer;">Cancel</button>
+                        <button type="submit" style="padding: 8px 15px; border: none; background: #2563eb; color: white; border-radius: 6px; cursor: pointer;">Subscribe</button>
+                    </div>
+                </form>
+                <p id="notify-status" style="font-size: 0.8rem; margin-top: 10px; color: #16a34a; display: none;">Successfully subscribed!</p>
             </div>
         </div>
 

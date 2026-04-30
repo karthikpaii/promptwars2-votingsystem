@@ -42,6 +42,21 @@ def chat():
         "session_id": session_id
     })
 
+@app.route("/api/subscribe", methods=["POST"])
+def subscribe():
+    data = request.json
+    email = data.get("email")
+    location = data.get("location")
+    
+    if not email:
+        return jsonify({"status": "error", "message": "Email is required"}), 400
+        
+    # In a real app, you would save this to Firestore here:
+    # db.collection('subscribers').add({"email": email, "location": location})
+    print(f"New Subscriber: {email} for region {location}")
+    
+    return jsonify({"status": "success", "message": "Subscribed successfully"})
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8080))
     app.run(debug=True, host="0.0.0.0", port=port)

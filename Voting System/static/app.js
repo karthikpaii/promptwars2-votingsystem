@@ -74,6 +74,53 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // --- Notification Modal Logic ---
+    const notifyBtn = document.getElementById('notify-btn');
+    const notifyModal = document.getElementById('notify-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const notifyForm = document.getElementById('notify-form');
+    const notifyStatus = document.getElementById('notify-status');
+
+    notifyBtn.addEventListener('click', () => {
+        notifyModal.style.display = 'flex';
+        notifyStatus.style.display = 'none';
+        document.getElementById('notify-email').value = '';
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+        notifyModal.style.display = 'none';
+    });
+
+    notifyForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('notify-email').value;
+        const location = document.getElementById('user-location').value;
+
+        try {
+            const response = await fetch('/api/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, location })
+            });
+            const data = await response.json();
+            
+            if(data.status === 'success') {
+                notifyStatus.style.display = 'block';
+                notifyStatus.textContent = 'Successfully subscribed to alerts!';
+                notifyStatus.style.color = '#16a34a';
+                setTimeout(() => { notifyModal.style.display = 'none'; }, 2000);
+            } else {
+                notifyStatus.style.display = 'block';
+                notifyStatus.textContent = 'Error subscribing. Try again.';
+                notifyStatus.style.color = '#ef4444';
+            }
+        } catch (error) {
+            notifyStatus.style.display = 'block';
+            notifyStatus.textContent = 'Network error.';
+            notifyStatus.style.color = '#ef4444';
+        }
+    });
+
     function addMessage(text, sender) {
         const div = document.createElement('div');
         
