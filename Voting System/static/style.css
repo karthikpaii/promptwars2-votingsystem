@@ -6,22 +6,21 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #f0f4f8;
+    background-color: #f8fafc;
     color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 0;
+    padding: 0;
     height: 100vh;
-    font-size: 18px; /* Accessibility: Larger base font */
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
     width: 100%;
-    max-width: 800px;
-    height: 90vh;
+    max-width: 100%; /* Full width */
+    height: 100vh; /* Full height */
     background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -53,6 +52,10 @@ body {
     flex-direction: column;
     transition: all 0.3s ease;
     width: 100%;
+    max-width: 1000px; /* Center the chat inside the full screen */
+    margin: 0 auto; /* Center alignment */
+    background: white;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.02), 5px 0 25px rgba(0,0,0,0.02);
 }
 
 /* Timeline Styles */
@@ -142,12 +145,14 @@ body {
 }
 
 .chat-header {
-    background: #1a365d;
+    background: #1e293b; /* Darker, more premium header */
     color: white;
-    padding: 20px;
+    padding: 15px 40px; /* Wider padding for full width */
     display: flex;
     align-items: center;
     gap: 15px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    z-index: 10;
 }
 
 @media (max-width: 768px) {
@@ -192,12 +197,13 @@ body {
 }
 
 .message {
-    max-width: 85%;
-    padding: 16px 20px; /* Accessibility: Larger padding */
+    max-width: 75%;
+    padding: 16px 20px;
     border-radius: 18px;
-    font-size: 1.1rem; /* Accessibility: Larger message font */
-    line-height: 1.5;
+    font-size: 1.1rem;
+    line-height: 1.6;
     animation: fadeIn 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Slight shadow for depth */
 }
 
 .message p {
