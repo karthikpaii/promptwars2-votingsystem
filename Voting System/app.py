@@ -2,12 +2,11 @@ from flask import Flask, render_template, request, jsonify
 import os
 import uuid
 from dotenv import load_dotenv
+load_dotenv()
 
 # Import our modular services
 from services.conversation import process_chat_message
 from services.db import init_db
-
-load_dotenv()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-key-for-election-assistant')

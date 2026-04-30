@@ -3,11 +3,8 @@ from google import genai
 from services.security import scan_for_pii
 from services.db import save_chat_message
 
-# Initialize Gemini Client
-gemini_api_key = os.environ.get("GEMINI_API_KEY", "")
+# Initialize Gemini Client (lazy load to ensure env vars are populated)
 client = None
-if gemini_api_key:
-    client = genai.Client(api_key=gemini_api_key)
 
 SYSTEM_PROMPT = """
 You are a secure, intelligent Election Assistant designed to help users understand election processes in a simple, step-by-step, and interactive way.
@@ -63,12 +60,18 @@ def process_chat_message(session_id, user_message, location="General (No specifi
         return warning_msg, True
 
     # 2. Process with AI or Fallback
+    global client
+    if client is None:
+        gemini_api_key = os.environ.get("GEMINI_API_KEY", "")
+        if gemini_api_key:
+            client = genai.Client(api_key=gemini_api_key)
+
     response_text = ""
     try:
         if client:
             context = f"{SYSTEM_PROMPT}\n\nUSER'S LOCATION: {location}\nUSER'S LANGUAGE: {language}\n\nPlease tailor your response regarding deadlines, timelines, and local rules to the user's specific location if applicable. CRITICAL: You MUST answer the user entirely in the specified USER'S LANGUAGE ({language}).\n\nUser Message: {user_message}"
             response = client.models.generate_content(
-                model='gemini-1.5-flash',
+                model='gemini-2.5-flash',
                 contents=context
             )
             response_text = response.text
