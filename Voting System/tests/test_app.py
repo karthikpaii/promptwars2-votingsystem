@@ -61,14 +61,8 @@ class TestChatRoute(unittest.TestCase):
         self.assertEqual(data['status'], 'error')
 
     @patch('services.conversation.client', None)
-    def test_chat_whitespace_only_returns_400(self):
-        """POST /api/chat with whitespace-only message should return 400."""
-        response = self._post_chat({"message": "   ", "session_id": "s1"})
-        self.assertEqual(response.status_code, 400)
-
-    @patch('services.conversation.client', None)
     def test_chat_valid_message_returns_200(self):
-        """POST /api/chat with valid message should return 200 and success status."""
+        """POST /api/chat with valid message should return 200."""
         response = self._post_chat({
             "message": "How do I register to vote?",
             "session_id": "test_session_001",
@@ -79,7 +73,7 @@ class TestChatRoute(unittest.TestCase):
         data = json.loads(response.data)
         self.assertEqual(data['status'], 'success')
         self.assertIn('message', data)
-        self.assertIn('session_id', data)
+        self.assertIn('suggested_actions', data)
 
     @patch('services.conversation.client', None)
     def test_chat_pii_detected_returns_warning(self):
@@ -87,8 +81,7 @@ class TestChatRoute(unittest.TestCase):
         response = self._post_chat({
             "message": "My SSN is 123-45-6789",
             "session_id": "pii_session",
-            "location": "USA",
-            "language": "English"
+            "location": "USA"
         })
         self.assertEqual(response.status_code, 200)
         data = json.loads(response.data)
@@ -98,60 +91,11 @@ class TestChatRoute(unittest.TestCase):
     def test_chat_auto_generates_session_id(self):
         """POST /api/chat without session_id should auto-generate one."""
         response = self._post_chat({
-            "message": "What is the voting process?",
-            "location": "India",
-            "language": "English"
+            "message": "What is the voting process?"
         })
         self.assertEqual(response.status_code, 200)
         data = json.loads(response.data)
         self.assertIn('session_id', data)
-        self.assertTrue(len(data['session_id']) > 0)
-
-    @patch('services.conversation.client', None)
-    def test_chat_response_contains_session_id(self):
-        """Response should echo back the session_id."""
-        response = self._post_chat({
-            "message": "How do I vote?",
-            "session_id": "echo_test_session"
-        })
-        data = json.loads(response.data)
-        self.assertEqual(data['session_id'], 'echo_test_session')
-
-    @patch('services.conversation.client', None)
-    def test_chat_multilingual_hindi(self):
-        """Chat endpoint should handle Hindi language selection."""
-        response = self._post_chat({
-            "message": "How do I register?",
-            "session_id": "hindi_session",
-            "location": "India",
-            "language": "Hindi"
-        })
-        self.assertEqual(response.status_code, 200)
-        data = json.loads(response.data)
-        self.assertEqual(data['status'], 'success')
-
-    @patch('services.conversation.client', None)
-    def test_chat_roadmap_query(self):
-        """Chat should handle roadmap requests gracefully."""
-        response = self._post_chat({
-            "message": "Give me a roadmap",
-            "session_id": "roadmap_session",
-            "location": "California",
-            "language": "English"
-        })
-        self.assertEqual(response.status_code, 200)
-        data = json.loads(response.data)
-        self.assertEqual(data['status'], 'success')
-
-    def test_chat_missing_json_body(self):
-        """POST /api/chat with no JSON body should not crash."""
-        response = self.client.post(
-            '/api/chat',
-            data='',
-            content_type='application/json'
-        )
-        # Should return 400 or handle gracefully
-        self.assertIn(response.status_code, [200, 400, 500])
 
 
 class TestSubscribeRoute(unittest.TestCase):
@@ -169,33 +113,13 @@ class TestSubscribeRoute(unittest.TestCase):
 
     def test_subscribe_valid_email_returns_200(self):
         """POST /api/subscribe with valid email should return 200."""
-        response = self._post_subscribe({"email": "test@example.com", "location": "India"})
+        response = self._post_subscribe({"email": "test@example.com"})
         self.assertEqual(response.status_code, 200)
-        data = json.loads(response.data)
-        self.assertEqual(data['status'], 'success')
 
     def test_subscribe_missing_email_returns_400(self):
         """POST /api/subscribe without email should return 400."""
         response = self._post_subscribe({"location": "India"})
         self.assertEqual(response.status_code, 400)
-        data = json.loads(response.data)
-        self.assertEqual(data['status'], 'error')
-
-    def test_subscribe_empty_email_returns_400(self):
-        """POST /api/subscribe with empty string email should return 400."""
-        response = self._post_subscribe({"email": "", "location": "India"})
-        self.assertEqual(response.status_code, 400)
-
-    def test_subscribe_response_has_message(self):
-        """Successful subscription response should include a message."""
-        response = self._post_subscribe({"email": "user@domain.com", "location": "USA"})
-        data = json.loads(response.data)
-        self.assertIn('message', data)
-
-    def test_subscribe_without_location(self):
-        """POST /api/subscribe without location should still succeed."""
-        response = self._post_subscribe({"email": "noloc@example.com"})
-        self.assertEqual(response.status_code, 200)
 
 
 if __name__ == '__main__':

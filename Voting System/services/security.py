@@ -3,14 +3,14 @@ Security service for the Election Assistant.
 Scans user input for Sensitive Personal Information (PII)
 and validates request data to prevent malicious input.
 """
+
 import re
 from typing import Tuple, Optional
 
-
 # Compiled regex patterns for efficiency (pre-compiled at module load)
-_SSN_PATTERN = re.compile(r'\b\d{3}[-\s]?\d{2}[-\s]?\d{4}\b')
-_AADHAAR_PATTERN = re.compile(r'\b\d{4}[\s]?\d{4}[\s]?\d{4}\b')
-_CREDIT_CARD_PATTERN = re.compile(r'\b(?:\d[ -]?){13,16}\b')
+_SSN_PATTERN = re.compile(r"\b\d{3}[-\s]?\d{2}[-\s]?\d{4}\b")
+_AADHAAR_PATTERN = re.compile(r"\b\d{4}[\s]?\d{4}[\s]?\d{4}\b")
+_CREDIT_CARD_PATTERN = re.compile(r"\b(?:\d[ -]?){13,16}\b")
 
 _PII_WARNING = (
     "WARNING: Please do not share sensitive personal information like your SSN, "
@@ -51,6 +51,9 @@ def scan_for_pii(text: str) -> Tuple[bool, Optional[str]]:
         return True, _PII_WARNING
 
     if _AADHAAR_PATTERN.search(text):
+        return True, _PII_WARNING
+
+    if _CREDIT_CARD_PATTERN.search(text):
         return True, _PII_WARNING
 
     return False, None

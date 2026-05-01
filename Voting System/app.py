@@ -6,6 +6,7 @@ Routes:
     POST /api/chat      → Processes a user message and returns an AI response
     POST /api/subscribe → Registers a user for election reminder emails
 """
+
 import logging
 import os
 import uuid
@@ -37,6 +38,7 @@ init_db()
 # Security headers middleware
 # ---------------------------------------------------------------------------
 
+
 @app.after_request
 def add_security_headers(response):
     """Attach security-related HTTP headers to every response."""
@@ -51,6 +53,7 @@ def add_security_headers(response):
 # ---------------------------------------------------------------------------
 # Routes
 # ---------------------------------------------------------------------------
+
 
 @app.route("/")
 def home():
@@ -90,12 +93,14 @@ def chat():
     if is_warning and not response_text.startswith("WARNING"):
         response_text = f"WARNING: {response_text}"
 
-    return jsonify({
-        "status": "success",
-        "message": response_text,
-        "session_id": session_id,
-        "suggested_actions": suggested_actions
-    })
+    return jsonify(
+        {
+            "status": "success",
+            "message": response_text,
+            "session_id": session_id,
+            "suggested_actions": suggested_actions,
+        }
+    )
 
 
 @app.route("/api/subscribe", methods=["POST"])
