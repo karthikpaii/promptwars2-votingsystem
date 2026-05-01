@@ -17,354 +17,255 @@ NEVER ask for SSN, Aadhaar, passwords.
 Always respond in the user's selected language.
 After every response end with a clear question so the user knows what to do next."""
 
-PHASE_CONTENT = {
+# --- English Content (Default) ---
+PHASE_CONTENT_EN = {
     1: """🗳️ **Phase 1: Voter Registration**
-
 Here's what you need to do first:
-
-**Step 1 — Check Eligibility:**
-• Are you 18 years or older?
-• Are you a citizen of the country?
-
-**Step 2 — Gather Documents:**
-• Government-issued Photo ID (Passport, Voter ID, Driver's License)
-• Proof of address (Utility bill, Bank statement)
-
-**Step 3 — Register:**
-• Visit your local election office OR register online at your government's election portal
-• Fill the registration form carefully
-
-**Step 4 — Confirm Registration:**
-• You'll receive a confirmation card/email — keep it safe!
-• Double-check your registration before the deadline
-
-⏰ Deadlines vary by region — check your local election authority website.
-
+**Step 1 — Check Eligibility:** Are you 18+ and a citizen?
+**Step 2 — Gather Documents:** Photo ID and Proof of address.
+**Step 3 — Register:** Visit local office or register online.
+**Step 4 — Confirm:** Keep your confirmation safe!
 Ready to move on? **Do you want to continue to Phase 2: Preparation?**""",
-
     2: """📋 **Phase 2: Preparation**
-
-Great! Now let's prepare for Election Day:
-
-**Step 1 — Find Your Polling Location:**
-• Check your registration letter or the official election website
-• Note the address and opening/closing hours
-
-**Step 2 — Review the Ballot:**
-• Research the candidates in your area
-• Understand the issues and measures you'll be voting on
-
-**Step 3 — Prepare Your Documents:**
-• Check what ID is required at your polling station
-• Some regions allow digital ID, others require physical documents
-
-**Step 4 — Plan Your Trip:**
-• Arrange transport to your polling station
-• Note: early voting may be available in your region!
-
+Great! Now let's prepare:
+**Step 1 — Find Polling Location:** Check official website for address.
+**Step 2 — Review Ballot:** Research candidates and issues.
+**Step 3 — Prepare Documents:** Bring required ID.
+**Step 4 — Plan Your Trip:** Check hours and transport.
 **Do you want to continue to Phase 3: Casting Your Vote?**""",
-
     3: """🏛️ **Phase 3: Casting Your Vote**
-
-It's Election Day! Here's what to do:
-
-**Step 1 — Arrive at Your Polling Station:**
-• Bring your required ID and confirmation documents
-• Go early to avoid long queues
-
-**Step 2 — Check In:**
-• Election officials will verify your identity
-• Your name will be marked off the voter roll
-
-**Step 3 — Receive Your Ballot:**
-• You'll get a ballot paper or be guided to a voting machine
-• Read all instructions carefully
-
-**Step 4 — Cast Your Vote:**
-• Mark your ballot clearly as instructed
-• For paper: fold and place in the ballot box
-• For electronic: confirm your selection before submitting
-
-**Step 5 — You're Done! 🎉**
-• Some stations give an "I Voted" sticker!
-
+It's Election Day!
+**Step 1 — Arrive:** Bring ID, go early.
+**Step 2 — Check In:** Officials verify your identity.
+**Step 3 — Receive Ballot:** Read instructions carefully.
+**Step 4 — Cast Vote:** Mark clearly and submit.
+**Step 5 — Done! 🎉**
 **Do you want to continue to Phase 4: Result Declaration?**""",
-
     4: """📊 **Phase 4: Result Declaration**
-
-Here's what happens after you vote:
-
-**Step 1 — Polls Close:**
-• When the polling period ends, voting stops
-• The official counting begins
-
-**Step 2 — Vote Counting:**
-• Officials count all ballots (paper + electronic)
-• Independent observers verify for fairness
-
-**Step 3 — Audits (if needed):**
-• Close results may trigger a recount or audit
-• This ensures accuracy and fairness
-
-**Step 4 — Results Announced:**
-• Preliminary results announced (may take hours/days)
-• Winners are officially certified by election authorities
-
-**Step 5 — Certification:**
-• Results published and elected officials take office
-
-🎉 **You've completed the full election process guide!**
-What would you like to do next?""",
+After you vote:
+**Step 1 — Polls Close:** Counting begins.
+**Step 2 — Vote Counting:** Officials count all ballots.
+**Step 3 — Audits:** Recounts if needed for accuracy.
+**Step 4 — Results Announced:** Preliminary results first.
+**Step 5 — Certification:** Official winners declared.
+🎉 **You've completed the guide!** What's next?""",
 }
 
-ELIGIBILITY_QUESTIONS = [
-    "**Eligibility Check — Question 1/3:**\n\nAre you a **citizen** of the country/region you selected?",
-    "**Eligibility Check — Question 2/3:**\n\nAre you **18 years of age or older?**",
-    "**Eligibility Check — Question 3/3:**\n\nAre you currently **registered to vote?**",
+ELIGIBILITY_QUESTIONS_EN = [
+    "**Eligibility Check — Question 1/3:** Are you a **citizen**?",
+    "**Eligibility Check — Question 2/3:** Are you **18 years or older?**",
+    "**Eligibility Check — Question 3/3:** Are you currently **registered to vote?**",
 ]
 
+ROADMAP_EN = "**🗺️ Your Roadmap:**\n1. Check eligibility\n2. Register\n3. Find polling booth\n4. Review candidates\n5. Vote with ID\n6. Done!"
+TIMELINE_EN = "📅 **Timeline:**\n• Registration: 15-30 days before\n• Early Voting: 1-2 weeks before\n• Election Day: Official date\n• Results: Hours to days after."
+
+# --- Translations ---
+TRANSLATIONS = {
+    "Hindi": {
+        "phases": {
+            1: "🗳️ **चरण 1: मतदाता पंजीकरण**\nयहाँ आपको सबसे पहले क्या करना है:\n**चरण 1 — पात्रता जांचें:** क्या आप 18+ और नागरिक हैं?\n**चरण 2 — दस्तावेज़ एकत्र करें:** फोटो आईडी और पते का प्रमाण।\n**चरण 3 — पंजीकरण:** स्थानीय कार्यालय जाएं या ऑनलाइन पंजीकरण करें।\n**चरण 4 — पुष्टि करें:** अपनी पुष्टि सुरक्षित रखें!\nआगे बढ़ने के लिए तैयार हैं? **क्या आप चरण 2: तैयारी जारी रखना चाहते हैं?**",
+            2: "📋 **चरण 2: तैयारी**\nबहुत बढ़िया! अब तैयारी करते हैं:\n**चरण 1 — मतदान केंद्र खोजें:** पते के लिए आधिकारिक वेबसाइट देखें।\n**चरण 2 — मतपत्र की समीक्षा करें:** उम्मीदवारों और मुद्दों पर शोध करें।\n**चरण 3 — दस्तावेज़ तैयार करें:** आवश्यक आईडी लाएं।\n**चरण 4 — अपनी यात्रा की योजना बनाएं:** समय और परिवहन की जांच करें।\n**क्या आप चरण 3: अपना वोट डालना जारी रखना चाहते हैं?**",
+            3: "🏛️ **चरण 3: अपना वोट डालना**\nआज चुनाव का दिन है!\n**चरण 1 — पहुंचें:** आईडी लाएं, जल्दी जाएं।\n**चरण 2 — चेक इन:** अधिकारी आपकी पहचान सत्यापित करते हैं।\n**चरण 3 — मतपत्र प्राप्त करें:** निर्देशों को ध्यान से पढ़ें।\n**चरण 4 — वोट डालें:** स्पष्ट रूप से चिह्नित करें और जमा करें।\n**चरण 5 — हो गया! 🎉**\n**क्या आप चरण 4: परिणाम घोषणा जारी रखना चाहते हैं?**",
+            4: "📊 **चरण 4: परिणाम घोषणा**\nवोट देने के बाद:\n**चरण 1 — मतदान बंद:** गिनती शुरू होती है।\n**चरण 2 — मतगणना:** अधिकारी सभी मतपत्रों की गिनती करते।\n**चरण 3 — ऑडिट:** सटीकता के लिए यदि आवश्यक हो तो पुनर्गणना।\n**चरण 4 — परिणाम घोषित:** पहले प्रारंभिक परिणाम।\n**चरण 5 — प्रमाणन:** आधिकारिक विजेता घोषित।\n🎉 **आपने मार्गदर्शिका पूरी कर ली है!** अगला क्या है?",
+        },
+        "eligibility": [
+            "**पात्रता जांच — प्रश्न 1/3:** क्या आप **नागरिक** हैं?",
+            "**पात्रता जांच — प्रश्न 2/3:** क्या आपकी उम्र **18 वर्ष या उससे अधिक है?**",
+            "**पात्रता जांच — प्रश्न 3/3:** क्या आप वर्तमान में **मतदान के लिए पंजीकृत हैं?**",
+        ],
+        "roadmap": "**🗺️ आपका रोडमैप:**\n1. पात्रता जांचें\n2. पंजीकरण करें\n3. मतदान केंद्र खोजें\n4. उम्मीदवारों की समीक्षा करें\n5. आईडी के साथ वोट करें\n6. हो गया!",
+        "timeline": "📅 **समयरेखा:**\n• पंजीकरण: 15-30 दिन पहले\n• प्रारंभिक मतदान: 1-2 सप्ताह पहले\n• चुनाव का दिन: आधिकारिक तिथि\n• परिणाम: कुछ घंटों से दिनों बाद तक।",
+        "default": "नमस्ते! मैं चुनाव प्रक्रिया में आपका मार्गदर्शन कर सकता हूँ। आप क्या जानना चाहेंगे?"
+    },
+    "Kannada": {
+        "phases": {
+            1: "🗳️ **ಹಂತ 1: ಮತದಾರರ ನೋಂದಣಿ**\nನೀವು ಮೊದಲು ಮಾಡಬೇಕಾದದ್ದು ಇಲ್ಲಿದೆ:\n**ಹಂತ 1 — ಅರ್ಹತೆ ಪರಿಶೀಲಿಸಿ:** ನೀವು 18+ ಮತ್ತು ನಾಗರಿಕರೇ?\n**ಹಂತ 2 — ದಾಖಲೆಗಳನ್ನು ಸಂಗ್ರಹಿಸಿ:** ಫೋಟೋ ಐಡಿ ಮತ್ತು ವಿಳಾಸದ ಪುರಾವೆ.\n**ಹಂತ 3 — ನೋಂದಾಯಿಸಿ:** ಸ್ಥಳೀಯ ಕಚೇರಿಗೆ ಭೇಟಿ ನೀಡಿ ಅಥವಾ ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ನೋಂದಾಯಿಸಿ.\n**ಹಂತ 4 — ದೃಢೀಕರಿಸಿ:** ನಿಮ್ಮ ದೃಢೀಕರಣವನ್ನು ಸುರಕ್ಷಿತವಾಗಿರಿಸಿ!\nಮುಂದೆ ಹೋಗಲು ಸಿದ್ಧರಿದ್ದೀರಾ? **ನೀವು ಹಂತ 2: ಸಿದ್ಧತೆಗೆ ಮುಂದುವರಿಯಲು ಬಯಸುವಿರಾ?**",
+            2: "📋 **ಹಂತ 2: ಸಿದ್ಧತೆ**\nಉತ್ತಮ! ಈಗ ಸಿದ್ಧರಾಗೋಣ:\n**ಹಂತ 1 — ಮತದಾನದ ಸ್ಥಳವನ್ನು ಹುಡುಕಿ:** ವಿಳಾಸಕ್ಕಾಗಿ ಅಧಿಕೃತ ವೆಬ್‌ಸೈಟ್ ಪರಿಶೀಲಿಸಿ.\n**ಹಂತ 2 — ಬ್ಯಾಲೆಟ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ:** ಅಭ್ಯರ್ಥಿಗಳು ಮತ್ತು ವಿಷಯಗಳ ಬಗ್ಗೆ ಸಂಶೋಧನೆ ಮಾಡಿ.\n**ಹಂತ 3 — ದಾಖಲೆಗಳನ್ನು ಸಿದ್ಧಪಡಿಸಿ:** ಅಗತ್ಯವಿರುವ ಐಡಿ ತನ್ನಿ.\n**ಹಂತ 4 — ನಿಮ್ಮ ಪ್ರವಾಸವನ್ನು ಯೋಜಿಸಿ:** ಸಮಯ ಮತ್ತು ಸಾರಿಗೆಯನ್ನು ಪರಿಶೀಲಿಸಿ.\n**ನೀವು ಹಂತ 3: ಮತದಾನಕ್ಕೆ ಮುಂದುವರಿಯಲು ಬಯಸುವಿರಾ?**",
+            3: "🏛️ **ಹಂತ 3: ಮತದಾನ ಮಾಡುವುದು**\nಇಂದು ಚುನಾವಣಾ ದಿನ!\n**ಹಂತ 1 — ತಲುಪಿ:** ಐಡಿ ತನ್ನಿ, ಬೇಗ ಹೋಗಿ.\n**ಹಂತ 2 — ಚೆಕ್ ಇನ್:** ಅಧಿಕಾರಿಗಳು ನಿಮ್ಮ ಗುರುತನ್ನು ಪರಿಶೀಲಿಸುತ್ತಾರೆ.\n**ಹಂತ 3 — ಬ್ಯಾಲೆಟ್ ಪಡೆಯಿರಿ:** ಸೂಚನೆಗಳನ್ನು ಎಚ್ಚರಿಕೆಯಿಂದ ಓದಿ.\n**ಹಂತ 4 — ಮತ ಚಲಾಯಿಸಿ:** ಸ್ಪಷ್ಟವಾಗಿ ಗುರುತಿಸಿ ಮತ್ತು ಸಲ್ಲಿಸಿ.\n**ಹಂತ 5 — ಮುಗಿದಿದೆ! 🎉**\n**ನೀವು ಹಂತ 4: ಫಲಿತಾಂಶ ಘೋಷಣೆಗೆ ಮುಂದುವರಿಯಲು ಬಯಸುವಿರಾ?**",
+            4: "📊 **ಹಂತ 4: ಫಲಿತಾಂಶ ಘೋಷಣೆ**\nನೀವು ಮತ ಚಲಾಯಿಸಿದ ನಂತರ:\n**ಹಂತ 1 — ಮತದಾನ ಮುಕ್ತಾಯ:** ಎಣಿಕೆ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ.\n**ಹಂತ 2 — ಮತ ಎಣಿಕೆ:** ಅಧಿಕಾರಿಗಳು ಎಲ್ಲಾ ಮತಗಳನ್ನು ಎಣಿಸುತ್ತಾರೆ.\n**ಹಂತ 3 — ಆಡಿಟ್‌ಗಳು:** ನಿಖರತೆಗಾಗಿ ಅಗತ್ಯವಿದ್ದರೆ ಮರು ಎಣಿಕೆ.\n**ಹಂತ 4 — ಫಲಿತಾಂಶಗಳ ಘೋಷಣೆ:** ಮೊದಲು ಪ್ರಾಥಮಿಕ ಫಲಿತಾಂಶಗಳು.\n**ಹಂತ 5 — ಪ್ರಮಾಣೀಕರಣ:** ಅಧಿಕೃತ ವಿಜೇತರ ಘೋಷಣೆ.\n🎉 **ನೀವು ಮಾರ್ಗದರ್ಶಿಯನ್ನು ಪೂರ್ಣಗೊಳಿಸಿದ್ದೀರಿ!** ಮುಂದೇನು?",
+        },
+        "eligibility": [
+            "**ಅರ್ಹತೆ ಪರೀಕ್ಷೆ — ಪ್ರಶ್ನೆ 1/3:** ನೀವು **ನಾಗರಿಕರೇ**?",
+            "**ಅರ್ಹತೆ ಪರೀಕ್ಷೆ — ಪ್ರಶ್ನೆ 2/3:** ನಿಮಗೆ **18 ವರ್ಷ ಅಥವಾ ಅದಕ್ಕಿಂತ ಹೆಚ್ಚು ವಯಸ್ಸಾಗಿದೆಯೇ?**",
+            "**ಅರ್ಹತೆ ಪರೀಕ್ಷೆ — ಪ್ರಶ್ನೆ 3/3:** ನೀವು ಪ್ರಸ್ತುತ **ಮತದಾನ ಮಾಡಲು ನೋಂದಾಯಿಸಿಕೊಂಡಿದ್ದೀರಾ?**",
+        ],
+        "roadmap": "**🗺️ ನಿಮ್ಮ ರೋಡ್‌ಮ್ಯಾಪ್:**\n1. ಅರ್ಹತೆ ಪರಿಶೀಲಿಸಿ\n2. ನೋಂದಾಯಿಸಿ\n3. ಮತದಾನ ಕೇಂದ್ರ ಹುಡುಕಿ\n4. ಅಭ್ಯರ್ಥಿಗಳನ್ನು ಪರಿಶೀಲಿಸಿ\n5. ಐಡಿಯೊಂದಿಗೆ ಮತ ಚಲಾಯಿಸಿ\n6. ಮುಗಿದಿದೆ!",
+        "timeline": "📅 **ಸಮಯಾವಳಿ:**\n• ನೋಂದಣಿ: 15-30 ದಿನಗಳ ಮೊದಲು\n• ಮುಂಚಿತ ಮತದಾನ: 1-2 ವಾರಗಳ ಮೊದಲು\n• ಚುನಾವಣಾ ದಿನ: ಅಧಿಕೃತ ದಿನಾಂಕ\n• ಫಲಿತಾಂಶಗಳು: ಗಂಟೆಗಳಿಂದ ದಿನಗಳ ನಂತರ.",
+        "default": "ನಮಸ್ಕಾರ! ಚುನಾವಣಾ ಪ್ರಕ್ರಿಯೆಯ ಬಗ್ಗೆ ನಾನು ನಿಮಗೆ ಮಾರ್ಗದರ್ಶನ ನೀಡಬಲ್ಲೆ. ನೀವು ಏನು ತಿಳಿಯಲು ಬಯಸುತ್ತೀರಿ?"
+    },
+    "Bengali": {
+        "phases": {
+            1: "🗳️ **ধাপ ১: ভোটার নিবন্ধন**\nআপনাকে প্রথমে যা করতে হবে তা এখানে রয়েছে:\n**ধাপ ১ — যোগ্যতা যাচাই করুন:** আপনি কি ১৮+ এবং একজন নাগরিক?\n**ধাপ ২ — নথি সংগ্রহ করুন:** ফটো আইডি এবং ঠিকানার প্রমাণ।\n**ধাপ ৩ — নিবন্ধন করুন:** স্থানীয় অফিসে যান বা অনলাইনে নিবন্ধন করুন।\n**ধাপ ৪ — নিশ্চিত করুন:** আপনার নিশ্চিতকরণটি নিরাপদ রাখুন!\nএগিয়ে যেতে প্রস্তুত? **আপনি কি ধাপ ২: প্রস্তুতিতে চালিয়ে যেতে চান?**",
+            2: "📋 **ধাপ ২: প্রস্তুতি**\nচমৎকার! এবার প্রস্তুতি নেওয়া যাক:\n**ধাপ ১ — ভোটকেন্দ্র খুঁজুন:** ঠিকানার জন্য অফিসিয়াল ওয়েবসাইট দেখুন।\n**ধাপ ২ — ব্যালট পর্যালোচনা করুন:** প্রার্থী এবং বিষয়গুলো নিয়ে গবেষণা করুন।\n**ধাপ ৩ — নথি প্রস্তুত করুন:** প্রয়োজনীয় আইডি সাথে আনুন।\n**ধাপ ৪ — আপনার সফরের পরিকল্পনা করুন:** সময় এবং পরিবহন ব্যবস্থা দেখে নিন।\n**আপনি কি ধাপ ৩: ভোট প্রদান করতে চালিয়ে যেতে চান?**",
+            3: "🏛️ **ধাপ ৩: ভোট প্রদান**\nআজ নির্বাচনের দিন!\n**ধাপ ১ — পৌঁছানো:** আইডি আনুন, তাড়াতাড়ি যান।\n**ধাপ ২ — চেক ইন:** কর্মকর্তারা আপনার পরিচয় যাচাই করবেন।\n**ধাপ ৩ — ব্যালট গ্রহণ করুন:** নির্দেশাবলী সাবধানে পড়ুন।\n**ধাপ ৪ — ভোট দিন:** স্পষ্টভাবে চিহ্নিত করুন এবং জমা দিন।\n**ধাপ ৫ — শেষ! 🎉**\n**আপনি কি ধাপ ৪: ফলাফল ঘোষণার দিকে এগিয়ে যেতে চান?**",
+            4: "📊 **ধাপ ৪: ফলাফল ঘোষণা**\nভোট দেওয়ার পর:\n**ধাপ ১ — ভোট গ্রহণ শেষ:** গণনা শুরু হয়।\n**ধাপ ২ — ভোট গণনা:** কর্মকর্তারা সব ব্যালট গণনা করেন।\n**ধাপ ৩ — অডিট:** নির্ভুলতার জন্য প্রয়োজনে পুনরায় গণনা।\n**ধাপ ৪ — ফলাফল ঘোষণা:** প্রথমে প্রাথমিক ফলাফল।\n**ধাপ ৫ — শংসাপত্র প্রদান:** সরকারিভাবে বিজয়ী ঘোষণা।\n🎉 **আপনি নির্দেশিকাটি সম্পন্ন করেছেন!** এরপর কী?",
+        },
+        "eligibility": [
+            "**যোগ্যতা যাচাই — প্রশ্ন ১/৩:** আপনি কি একজন **নাগরিক**?",
+            "**যোগ্যতা যাচাই — প্রশ্ন ২/৩:** আপনার বয়স কি **১৮ বছর বা তার বেশি?**",
+            "**যোগ্যতা যাচাই — প্রশ্ন ৩/৩:** আপনি কি বর্তমানে **ভোট দেওয়ার জন্য নিবন্ধিত?**",
+        ],
+        "roadmap": "**🗺️ আপনার রোডম্যাপ:**\n১. যোগ্যতা যাচাই করুন\n২. নিবন্ধন করুন\n৩. ভোটকেন্দ্র খুঁজুন\n৪. প্রার্থীদের পর্যালোচনা করুন\n৫. আইডিসহ ভোট দিন\n৬. শেষ!",
+        "timeline": "📅 **সময়সীমা:**\n• নিবন্ধন: ১৫-৩০ দিন আগে\n• আগাম ভোট: ১-২ সপ্তাহ আগে\n• নির্বাচনের দিন: সরকারি তারিখ\n• ফলাফল: কয়েক ঘণ্টা থেকে কয়েক দিন পর।",
+        "default": "নমস্কার! নির্বাচন প্রক্রিয়া সম্পর্কে আমি আপনাকে গাইড করতে পারি। আপনি কী জানতে চান?"
+    },
+    "Telugu": {
+        "phases": {
+            1: "🗳️ **దశ 1: ఓటరు నమోదు**\nమీరు మొదట చేయవలసినది ఇక్కడ ఉంది:\n**దశ 1 — అర్హతను తనిఖీ చేయండి:** మీరు 18+ మరియు పౌరులా?\n**దశ 2 — పత్రాలను సేకరించండి:** ఫోటో ఐడి మరియు చిరునామా రుజువు.\n**దశ 3 — నమోదు చేసుకోండి:** స్థానిక కార్యాలయాన్ని సందర్శించండి లేదా ఆన్‌లైన్‌లో నమోదు చేసుకోండి.\n**దశ 4 — ధృవీకరించుకోండి:** మీ ధృవీకరణను సురక్షితంగా ఉంచండి!\nముందుకు వెళ్లడానికి సిద్ధంగా ఉన్నారా? **మీరు దశ 2: సన్నాహాలకు కొనసాగాలనుకుంటున్నారా?**",
+            2: "📋 **దశ 2: సన్నాహాలు**\nచాలా బాగుంది! ఇప్పుడు సిద్ధమవుదాం:\n**దశ 1 — పోలింగ్ స్థానాన్ని కనుగొనండి:** చిరునామా కోసం అధికారిక వెబ్‌సైట్‌ను చూడండి.\n**దశ 2 — బ్యాలెట్‌ను సమీక్షించండి:** అభ్యర్థులు మరియు అంశాలపై పరిశోధన చేయండి.\n**దశ 3 — పత్రాలను సిద్ధం చేయండి:** అవసరమైన ఐడిని తీసుకురండి.\n**దశ 4 — మీ ప్రయాణాన్ని ప్లాన్ చేయండి:** సమయం మరియు రవాణాను తనిఖీ చేయండి.\n**మీరు దశ 3: ఓటు వేయడానికి కొనసాగాలనుకుంటున్నారా?**",
+            3: "🏛️ **దశ 3: ఓటు వేయడం**\nఈరోజు ఎన్నికల రోజు!\n**దశ 1 — చేరుకోండి:** ఐడి తీసుకురండి, త్వరగా వెళ్లండి.\n**దశ 2 — చెక్ ఇన్:** అధికారులు మీ గుర్తింపును ధృవీకరిస్తారు.\n**దశ 3 — బ్యాలెట్ పొందండి:** సూచనలను జాగ్రత్తగా చదవండి.\n**దశ 4 — ఓటు వేయండి:** స్పష్టంగా గుర్తు పెట్టి సమర్పించండి.\n**దశ 5 — పూర్తయింది! 🎉**\n**మీరు దశ 4: ఫలితాల ప్రకటనకు కొనసాగాలనుకుంటున్నారా?**",
+            4: "📊 **దశ 4: ఫలితాల ప్రకటన**\nమీరు ఓటు వేసిన తర్వాత:\n**దశ 1 — పోలింగ్ ముగింపు:** లెక్కింపు ప్రారంభమవుతుంది.\n**దశ 2 — ఓట్ల లెక్కింపు:** అధికారులు అన్ని బ్యాలెట్లను లెక్కిస్తారు.\n**దశ 3 — ఆడిట్‌లు:** ఖచ్చితత్వం కోసం అవసరమైతే తిరిగి లెక్కించడం.\n**దశ 4 — ఫలితాల వెల్లడి:** మొదట ప్రాథమిక ఫలితాలు.\n**దశ 5 — ధృవీకరణ:** అధికారిక విజేతల ప్రకటన.\n🎉 **మీరు గైడ్‌ను పూర్తి చేసారు!** తదుపరి ఏమిటి?",
+        },
+        "eligibility": [
+            "**అర్హత తనిఖీ — ప్రశ్న 1/3:** మీరు **పౌరులా**?",
+            "**అర్హత తనిఖీ — ప్రశ్న 2/3:** మీ వయస్సు **18 ఏళ్లు లేదా అంతకంటే ఎక్కువ?**",
+            "**అర్హత తనిఖీ — ప్రశ్న 3/3:** మీరు ప్రస్తుతం **ఓటు వేయడానికి నమోదు చేసుకున్నారా?**",
+        ],
+        "roadmap": "**🗺️ మీ రోడ్‌మ్యాప్:**\n1. అర్హతను తనిఖీ చేయండి\n2. నమోదు చేసుకోండి\n3. పోలింగ్ బూత్‌ను కనుగొనండి\n4. అభ్యర్థులను సమీక్షించండి\n5. ఐడితో ఓటు వేయండి\n6. పూర్తయింది!",
+        "timeline": "📅 **కాలక్రమం:**\n• నమోదు: 15-30 రోజుల ముందు\n• ముందస్తు ఓటింగ్: 1-2 వారాల ముందు\n• ఎన్నికల రోజు: అధికారిక తేదీ\n• ఫలితాలు: గంటల నుండి రోజుల తర్వాత.",
+        "default": "నమస్కారం! ఎన్నికల ప్రక్రియ గురించి నేను మీకు మార్గదర్శనం చేయగలను. మీరు ఏమి తెలుసుకోవాలనుకుంటున్నారు?"
+    },
+    "Marathi": {
+        "phases": {
+            1: "🗳️ **टप्पा १: मतदार नोंदणी**\nतुम्हाला सर्वात आधी काय करायचे आहे ते येथे आहे:\n**टप्पा १ — पात्रता तपासा:** तुम्ही १८+ आणि नागरिक आहात का?\n**टप्पा २ — कागदपत्रे गोळा करा:** फोटो आयडी आणि पत्त्याचा पुरावा.\n**टप्पा ३ — नोंदणी करा:** स्थानिक कार्यालयाला भेट द्या किंवा ऑनलाइन नोंदणी करा.\n**टप्पा ४ — पुष्टी करा:** तुमची पुष्टी सुरक्षित ठेवा!\nपुढे जाण्यास तयार आहात? **तुम्ही टप्पा २: तयारी सुरू ठेवू इच्छिता का?**",
+            2: "📋 **टप्पा २: तयारी**\nछान! आता तयारी करूया:\n**टप्पा १ — मतदान केंद्र शोधा:** पत्त्यासाठी अधिकृत वेबसाइट तपासा.\n**टप्पा २ — मतपत्रिकेचे पुनरावलोकन करा:** उमेदवार आणि मुद्द्यांवर संशोधन करा.\n**टप्पा ३ — कागदपत्रे तयार ठेवा:** आवश्यक आयडी सोबत आणा.\n**टप्पा ४ — तुमच्या सहलीचे नियोजन करा:** वेळ आणि वाहतूक तपासा.\n**तुम्ही टप्पा ३: मतदान करणे सुरू ठेवू इच्छिता का?**",
+            3: "🏛️ **टप्पा ३: मतदान करणे**\nआज निवडणुकीचा दिवस आहे!\n**टप्पा १ — पोहोचा:** आयडी आणा, लवकर जा.\n**टप्पा २ — चेक इन:** अधिकारी तुमची ओळख पटवतात.\n**टप्पा ३ — मतपत्रिका मिळवा:** सूचना काळजीपूर्वक वाचा.\n**टप्पा ४ — मतदान करा:** स्पष्टपणे खूण करा आणि सबमिट करा.\n**टप्पा ५ — झाले! 🎉**\n**तुम्ही टप्पा ४: निकाल घोषणा सुरू ठेवू इच्छिता का?**",
+            4: "📊 **टप्पा ४: निकाल घोषणा**\nमतदान केल्यानंतर:\n**टप्पा १ — मतदान बंद:** मोजणी सुरू होते.\n**टप्पा २ — मतमोजणी:** अधिकारी सर्व मतपत्रिकांची मोजणी करतात.\n**टप्पा ३ — ऑडिट:** अचूकतेसाठी आवश्यक असल्यास पुनर्मोजणी.\n**टप्पा ४ — निकाल जाहीर:** आधी प्राथमिक निकाल.\n**टप्पा ५ — प्रमाणन:** अधिकृत विजेते घोषित.\n🎉 **तुम्ही मार्गदर्शिका पूर्ण केली आहे!** पुढे काय?",
+        },
+        "eligibility": [
+            "**पात्रता तपासणी — प्रश्न १/३:** तुम्ही **नागरिक** आहात का?",
+            "**पात्रता तपासणी — प्रश्न २/३:** तुमचे वय **१८ वर्षे किंवा त्यापेक्षा जास्त आहे का?**",
+            "**पात्रता तपासणी — प्रश्न ३/३:** तुम्ही सध्या **मतदानासाठी नोंदणीकृत आहात का?**",
+        ],
+        "roadmap": "**🗺️ तुमचा रोडमॅप:**\n१. पात्रता तपासा\n२. नोंदणी करा\n३. मतदान केंद्र शोधा\n४. उमेदवारांचे पुनरावलोकन करा\n५. आयडीसह मतदान करा\n६. झाले!",
+        "timeline": "📅 **वेळापत्रक:**\n• नोंदणी: १५-३० दिवस आधी\n• लवकर मतदान: १-२ आठवडे आधी\n• निवडणुकीचा दिवस: अधिकृत तारीख\n• निकाल: काही तासांनंतर ते दिवसांनंतर.",
+        "default": "नमस्कार! निवडणूक प्रक्रियेबद्दल मी तुम्हाला मार्गदर्शन करू शकतो. तुम्हाला काय जाणून घ्यायचे आहे?"
+    },
+    "Tamil": {
+        "phases": {
+            1: "🗳️ **கட்டம் 1: வாக்காளர் பதிவு**\nநீங்கள் முதலில் செய்ய வேண்டியது இங்கே:\n**படி 1 — தகுதியைச் சரிபார்க்கவும்:** நீங்கள் 18+ மற்றும் குடிமகனா?\n**படி 2 — ஆவணங்களைச் சேகரிக்கவும்:** புகைப்பட அடையாள அட்டை மற்றும் முகவரி சான்று.\n**படி 3 — பதிவு செய்யவும்:** உள்ளூர் அலுவலகத்திற்குச் செல்லவும் அல்லது ஆன்லைனில் பதிவு செய்யவும்.\n**படி 4 — உறுதிப்படுத்தவும்:** உங்கள் உறுதிப்படுத்தலைப் பாதுகாப்பாக வைத்திருங்கள்!\nமுன்னேறத் தயாரா? **நீங்கள் கட்டம் 2: தயாரிப்புக்குத் தொடர விரும்புகிறீர்களா?**",
+            2: "📋 **கட்டம் 2: தயாரிப்பு**\nஅற்புதம்! இப்போது தயார் செய்வோம்:\n**படி 1 — வாக்குச் சாவடியைக் கண்டறியவும்:** முகவரிக்கு அதிகாரப்பூர்வ இணையதளத்தைச் சரிபார்க்கவும்.\n**படி 2 — வாக்குப் சீட்டை ஆய்வு செய்யவும்:** வேட்பாளர்கள் மற்றும் பிரச்சினைகளை ஆராயுங்கள்.\n**படி 3 — ஆவணங்களைத் தயார் செய்யவும்:** தேவையான அடையாள அட்டையைக் கொண்டு வரவும்.\n**படி 4 — உங்கள் பயணத்தைத் திட்டமிடுங்கள்:** நேரம் மற்றும் போக்குவரத்தைச் சரிபார்க்கவும்.\n**நீங்கள் கட்டம் 3: வாக்களிக்கத் தொடர விரும்புகிறீர்களா?**",
+            3: "🏛️ **கட்டம் 3: வாக்களித்தல்**\nஇன்று தேர்தல் நாள்!\n**படி 1 — வந்து சேருங்கள்:** அடையாள அட்டையைக் கொண்டு வாருங்கள், சீக்கிரம் செல்லுங்கள்.\n**படி 2 — செக்-இன்:** அதிகாரிகள் உங்கள் அடையாளத்தைச் சரிபார்ப்பார்கள்.\n**படி 3 — வாக்குப் சீட்டைப் பெறுங்கள்:** அறிவுறுத்தல்களை கவனமாகப் படியுங்கள்.\n**படி 4 — வாக்களியுங்கள்:** தெளிவாகக் குறியிட்டுச் சமர்ப்பிக்கவும்.\n**படி 5 — முடிந்தது! 🎉**\n**நீங்கள் கட்டம் 4: முடிவு அறிவிப்புக்குத் தொடர விரும்புகிறீர்களா?**",
+            4: "📊 **கட்டம் 4: முடிவு அறிவிப்பு**\nநீங்கள் வாக்களித்த பிறகு:\n**படி 1 — வாக்குப்பதிவு முடிவு:** எண்ணிக்கை தொடங்குகிறது.\n**படி 2 — வாக்கு எண்ணிக்கை:** அதிகாரிகள் அனைத்து வாக்குகளையும் எண்ணுகிறார்கள்.\n**படி 3 — தணிக்கைகள்:** துல்லியத்திற்காக தேவைப்பட்டால் மறு எண்ணிக்கை.\n**படி 4 — முடிவுகள் அறிவிப்பு:** முதலில் ஆரம்ப முடிவுகள்.\n**படி 5 — சான்றிதழ்:** அதிகாரப்பூர்వ வெற்றியாளர்கள் அறிவிப்பு.\n🎉 **நீங்கள் வழிகாட்டியை முடித்துவிட்டீர்கள்!** அடுத்து என்ன?",
+        },
+        "eligibility": [
+            "**தகுதிச் சரிபார்ப்பு — கேள்வி 1/3:** நீங்கள் ஒரு **குடிமகனா**?",
+            "**தகுதிச் சரிபார்ப்பு — கேள்வி 2/3:** உங்கள் வயது **18 அல்லது அதற்கு மேற்பட்டதா?**",
+            "**தகுதிச் சரிபார்ப்பு — கேள்வி 3/3:** நீங்கள் தற்போது **வாக்களிக்கப் பதிவு செய்துள்ளீர்களா?**",
+        ],
+        "roadmap": "**🗺️ உங்கள் வரைபடம்:**\n1. தகுதியைச் சரிபார்க்கவும்\n2. பதிவு செய்யவும்\n3. வாக்குச் சாவடியைக் கண்டறியவும்\n4. வேட்பாளர்களை ஆய்வு செய்யவும்\n5. அடையாள அட்டையுடன் வாக்களிக்கவும்\n6. முடிந்தது!",
+        "timeline": "📅 **காலவரிசை:**\n• பதிவு: 15-30 நாட்களுக்கு முன்பு\n• முன்கூட்டியே வாக்களித்தல்: 1-2 வாரங்களுக்கு முன்பு\n• தேர்தல் நாள்: அதிகாரப்பூர்வ தேதி\n• முடிவுகள்: சில மணிநேரம் முதல் சில நாட்கள் வரை.",
+        "default": "வணக்கம்! தேர்தல் செயல்முறை பற்றி நான் உங்களுக்கு வழிகாட்ட முடியும். நீங்கள் என்ன தெரிந்துகொள்ள விரும்புகிறீர்கள்?"
+    }
+}
 
 def _detect_yes(query: str) -> bool:
-    yes_words = ["yes", "continue", "next", "sure", "ok", "okay", "proceed", "go ahead", "✅", "yep", "yeah", "next step"]
+    yes_words = ["yes", "continue", "next", "sure", "ok", "okay", "proceed", "go ahead", "✅", "yep", "yeah", "next step", "हां", "ಹೌದು", "হ্যাঁ", "అవును", "हो", "ஆம்"]
     q = query.lower().strip()
     return any(w in q for w in yes_words)
 
-
 def _get_current_phase(history: list) -> int:
-    """Detect phase from the START of the last assistant message (not mentions within it)."""
-    if not history:
-        return 0
+    if not history: return 0
     last = history[-1].get("assistant_message", "")
-    # Use startswith on the emoji+heading that uniquely opens each phase block
-    if last.startswith("📊 **Phase 4"):
-        return 4
-    if last.startswith("🏛️ **Phase 3"):
-        return 3
-    if last.startswith("📋 **Phase 2"):
-        return 2
-    if last.startswith("🗳️ **Phase 1"):
-        return 1
+    if "**Phase 4" in last or "चरण 4" in last or "ಹಂತ 4" in last or "ধাপ ৪" in last or "దశ 4" in last or "टप्पा ४" in last or "கட்டம் 4" in last: return 4
+    if "**Phase 3" in last or "चरण 3" in last or "ಹಂತ 3" in last or "ধাপ ৩" in last or "దశ 3" in last or "टप्पा ३" in last or "கட்டம் 3" in last: return 3
+    if "**Phase 2" in last or "चरण 2" in last or "ಹಂತ 2" in last or "ধাপ ২" in last or "దశ 2" in last or "टप्पा २" in last or "கட்டம் 2" in last: return 2
+    if "**Phase 1" in last or "चरण 1" in last or "ಹಂತ 1" in last or "ধাপ ১" in last or "దశ 1" in last or "टप्पा १" in last or "கட்டம் 1" in last: return 1
     return 0
 
-
 def _get_eligibility_step(history: list) -> int:
-    """Returns which eligibility question to ask next (0-indexed)."""
     count = 0
     for msg in history:
-        a = msg.get("assistant_message", "").lower()
-        if "eligibility check" in a:
+        a = msg.get("assistant_message", "")
+        if "Eligibility Check" in a or "पात्रता जांच" in a or "ಅರ್ಹತೆ ಪರೀಕ್ಷೆ" in a or "যোগ্যতা যাচাই" in a or "అర్హత తనిఖీ" in a or "पात्रता तपासणी" in a or "தகுதிச் சரிபார்ப்பு" in a:
             count += 1
     return count
 
-
 def _actions_for_phase(phase: int) -> List[str]:
-    if phase == 1:
-        return ["✅ Yes, continue to Phase 2", "🗺️ My Voting Roadmap", "🔄 Start Over"]
-    if phase == 2:
-        return ["✅ Yes, continue to Phase 3", "⬅️ Back to Phase 1", "🔄 Start Over"]
-    if phase == 3:
-        return ["✅ Yes, continue to Phase 4", "⬅️ Back to Phase 2", "🔄 Start Over"]
-    if phase == 4:
-        return ["🗺️ My Voting Roadmap", "✅ Check Eligibility", "🏠 Start Over"]
+    if phase == 1: return ["✅ Yes, continue to Phase 2", "🗺️ My Voting Roadmap", "🔄 Start Over"]
+    if phase == 2: return ["✅ Yes, continue to Phase 3", "⬅️ Back to Phase 1", "🔄 Start Over"]
+    if phase == 3: return ["✅ Yes, continue to Phase 4", "⬅️ Back to Phase 2", "🔄 Start Over"]
+    if phase == 4: return ["🗺️ My Voting Roadmap", "✅ Check Eligibility", "🏠 Start Over"]
     return ["📋 Register to Vote", "✅ Check Eligibility", "🗳️ Voting Process", "📅 Election Timelines", "🗺️ My Voting Roadmap"]
-
 
 def get_suggested_actions(response_text: str, is_warning: bool = False) -> List[str]:
-    if is_warning:
-        return ["🔄 Ask a different question", "🏠 Start Over"]
-    r = response_text.lower()
-    if "question 1/3" in r:
-        return ["✅ Yes, I am a citizen", "❌ No, I'm not a citizen"]
-    if "question 2/3" in r:
-        return ["✅ Yes, I'm 18+", "❌ No, I'm under 18"]
-    if "question 3/3" in r:
-        return ["✅ Yes, I'm registered", "❌ No, not yet registered"]
-    if "phase 4" in r or "result declaration" in r:
-        return _actions_for_phase(4)
-    if "phase 3" in r or "casting your vote" in r:
-        return _actions_for_phase(3)
-    if "phase 2" in r or "preparation" in r:
-        return _actions_for_phase(2)
-    if "phase 1" in r or "voter registration" in r:
-        return _actions_for_phase(1)
-    if "roadmap" in r or "checklist" in r:
-        return ["📍 Find My Polling Booth", "✅ Check Eligibility", "🏠 Start Over"]
-    if "do you want to continue" in r or "would you like" in r:
-        return ["✅ Yes, continue!", "🔄 Start Over"]
-    if "eligible" in r and ("congratulations" in r or "not eligible" in r):
-        return ["🗺️ My Voting Roadmap", "📋 Register to Vote", "🏠 Start Over"]
-    return ["📋 Register to Vote", "✅ Check Eligibility", "🗳️ Voting Process", "📅 Election Timelines", "🗺️ My Voting Roadmap"]
-
-
-TRANSLATIONS = {
-    "Hindi": {
-        "default": "नमस्ते! मैं चुनाव प्रक्रिया में आपका मार्गदर्शन कर सकता हूँ। आप क्या जानना चाहेंगे?",
-        "register": "**चरण 1: मतदाता पंजीकरण**\nपहले अपनी पात्रता जांचें (18+ और नागरिक)। फिर अपने दस्तावेज़ एकत्र करें और स्थानीय चुनाव कार्यालय में पंजीकरण करें।\nक्या आप जारी रखना चाहते हैं?",
-        "roadmap": "**आपका व्यक्तिगत रोडमैप:**\n1. यदि पंजीकृत नहीं → 10 अक्टूबर से पहले पंजीकरण करें\n2. मतदान केंद्र खोजें\n3. मतदान दिवस पर जाएं और वोट करें",
-        "eligible": "**पात्रता जांच:**\nक्या आप नागरिक हैं?",
-        "timeline": "चुनाव की समयसीमा अलग-अलग होती है। कृपया अपना देश बताएं।",
-        "process": "**चरण 1:** मतदान दिवस से पहले अपने मतदान केंद्र का पता ऑनलाइन जांचें।\nक्या आप जारी रखना चाहते हैं?",
-    },
-    "Kannada": {
-        "default": "ನಮಸ್ಕಾರ! ಚುನಾವಣಾ ಪ್ರಕ್ರಿಯೆಯ ಬಗ್ಗೆ ನಾನು ನಿಮಗೆ ಮಾರ್ಗದರ್ಶನ ನೀಡಬಲ್ಲೆ. ನೀವು ಏನು ತಿಳಿಯಲು ಬಯಸುತ್ತೀರಿ?",
-        "register": "**ಹಂತ 1: ಮತದಾರ ನೋಂದಣಿ**\nಮೊದಲು ನಿಮ್ಮ ಅರ್ಹತೆ ಪರಿಶೀಲಿಸಿ (18+ ಮತ್ತು ನಾಗರಿಕ). ದಾಖಲೆಗಳನ್ನು ಸಿದ್ಧಪಡಿಸಿ ಮತ್ತು ಚುನಾವಣಾ ಕಚೇರಿಯಲ್ಲಿ ನೋಂದಾಯಿಸಿ.\nಮುಂದುವರಿಸಲು ಬಯಸುವಿರಾ?",
-        "roadmap": "**ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ರೋಡ್‌ಮ್ಯಾಪ್:**\n1. ನೋಂದಾಯಿತರಲ್ಲದಿದ್ದರೆ → ಅಕ್ಟೋಬರ್ 10 ರ ಮೊದಲು ನೋಂದಾಯಿಸಿ\n2. ಮತದಾನ ಕೇಂದ್ರ ಹುಡುಕಿ\n3. ಮತದಾನ ದಿನ ಹೋಗಿ",
-        "eligible": "**ಅರ್ಹತೆ ಪರೀಕ್ಷೆ:**\nನೀವು ನಾಗರಿಕರೇ?",
-        "timeline": "ಚುನಾವಣಾ ದಿನಾಂಕಗಳು ಬದಲಾಗುತ್ತವೆ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ದೇಶ ತಿಳಿಸಿ.",
-        "process": "**ಹಂತ 1:** ಮತದಾನ ದಿನದ ಮೊದಲು ಮತದಾನ ಕೇಂದ್ರದ ವಿಳಾಸ ಪರಿಶೀಲಿಸಿ.\nಮುಂದುವರಿಸಲು ಬಯಸುವಿರಾ?",
-    },
-    "Bengali": {
-        "default": "নমস্কার! নির্বাচন প্রক্রিয়া সম্পর্কে আমি আপনাকে গাইড করতে পারি। আপনি কী জানতে চান?",
-        "register": "**ধাপ ১: ভোটার নিবন্ধন**\nপ্রথমে যোগ্যতা যাচাই করুন (১৮+ এবং নাগরিক)। দলিল সংগ্রহ করুন এবং নির্বাচন অফিসে নিবন্ধন করুন।\nচালিয়ে যেতে চান?",
-        "roadmap": "**আপনার ব্যক্তিগত রোডম্যাপ:**\n১. নিবন্ধিত না হলে → ১০ অক্টোবরের আগে নিবন্ধন করুন\n২. ভোটকেন্দ্র খুঁজুন\n৩. ভোটের দিন যান",
-        "eligible": "**যোগ্যতা পরীক্ষা:**\nআপনি কি নাগরিক?",
-        "timeline": "নির্বাচনের সময়সীমা পরিবর্তিত হয়। আপনার দেশ জানান।",
-        "process": "**ধাপ ১:** ভোটের দিনের আগে ভোটকেন্দ্রের ঠিকানা অনলাইনে যাচাই করুন।\nচালিয়ে যেতে চান?",
-    },
-    "Telugu": {
-        "default": "నమస్కారం! ఎన్నికల ప్రక్రియ గురించి నేను మీకు మార్గదర్శనం చేయగలను. మీరు ఏమి తెలుసుకోవాలనుకుంటున్నారు?",
-        "register": "**దశ 1: ఓటరు నమోదు**\nముందుగా అర్హత తనిఖీ చేయండి (18+ మరియు పౌరుడు). పత్రాలు సేకరించండి మరియు ఎన్నికల కార్యాలయంలో నమోదు చేయండి.\nకొనసాగించాలనుకుంటున్నారా?",
-        "roadmap": "**మీ వ్యక్తిగత రోడ్‌మ్యాప్:**\n1. నమోదు కాకపోతే → అక్టోబర్ 10 లోపు నమోదు చేయండి\n2. పోలింగ్ బూత్ కనుగొనండి\n3. పోలింగ్ రోజున వెళ్ళండి",
-        "eligible": "**అర్హత తనిఖీ:**\nమీరు పౌరుడా?",
-        "timeline": "ఎన్నికల కాలక్రమం మారుతుంది. మీ దేశం చెప్పండి.",
-        "process": "**దశ 1:** పోలింగ్ రోజుకు ముందు పోలింగ్ స్టేషన్ స్థానం ఆన్‌లైన్‌లో తనిఖీ చేయండి.\nకొనసాగించాలనుకుంటున్నారా?",
-    },
-    "Marathi": {
-        "default": "नमस्कार! निवडणूक प्रक्रियेबद्दल मी तुम्हाला मार्गदर्शन करू शकतो. तुम्हाला काय जाणून घ्यायचे आहे?",
-        "register": "**पायरी १: मतदार नोंदणी**\nप्रथम पात्रता तपासा (18+ आणि नागरिक). कागदपत्रे जमा करा आणि निवडणूक कार्यालयात नोंदणी करा.\nपुढे चालू ठेवायचे का?",
-        "roadmap": "**तुमचा वैयक्तिक रोडमॅप:**\n१. नोंदणी नसल्यास → १० ऑक्टोबरपूर्वी नोंदणी करा\n२. मतदान केंद्र शोधा\n३. मतदान दिवशी जा",
-        "eligible": "**पात्रता तपासणी:**\nतुम्ही नागरिक आहात का?",
-        "timeline": "निवडणुकीच्या वेळा बदलतात. तुमचा देश सांगा.",
-        "process": "**पायरी १:** मतदानाच्या आधी मतदान केंद्राचे ठिकाण ऑनलाइन तपासा.\nपुढे चालू ठेवायचे का?",
-    },
-    "Tamil": {
-        "default": "வணக்கம்! தேர்தல் செயல்முறை பற்றி நான் உங்களுக்கு வழிகாட்ட முடியும். நீங்கள் என்ன தெரிந்துகொள்ள விரும்புகிறீர்கள்?",
-        "register": "**படி 1: வாக்காளர் பதிவு**\nமுதலில் தகுதியை சரிபார்க்கவும் (18+ மற்றும் குடிமகன்). ஆவணங்களை சேகரித்து தேர்தல் அலுவலகத்தில் பதிவு செய்யவும்.\nதொடர விரும்புகிறீர்களா?",
-        "roadmap": "**உங்கள் தனிப்பயன் வழிகாட்டி:**\n1. பதிவில்லை என்றால் → அக்டோபர் 10க்குள் பதிவு செய்யுங்கள்\n2. வாக்குச்சாவடி கண்டுபிடிக்கவும்\n3. வாக்களிக்கும் நாளில் சென்று வாக்களியுங்கள்",
-        "eligible": "**தகுதி சோதனை:**\nநீங்கள் குடிமகனா?",
-        "timeline": "தேர்தல் நேர அட்டவணை மாறுபடும். உங்கள் நாட்டை சொல்லுங்கள்.",
-        "process": "**படி 1:** வாக்களிக்கும் நாளுக்கு முன் வாக்குச்சாவடி இடத்தை சரிபார்க்கவும்.\nதொடர விரும்புகிறீர்களா?",
-    },
-}
-
+    if is_warning: return ["🔄 Ask a different question", "🏠 Start Over"]
+    r = response_text
+    if "Question 1/3" in r or "प्रश्न 1/3" in r or "ಪ್ರಶ್ನೆ 1/3" in r or "প্রশ্ন ১/৩" in r or "ప్రశ్న 1/3" in r or "प्रश्न १/३" in r or "கேள்வி 1/3" in r: return ["✅ Yes", "❌ No"]
+    if "Question 2/3" in r or "प्रश्न 2/3" in r or "ಪ್ರಶ್ನೆ 2/3" in r or "প্রশ্ন ২/৩" in r or "ప్రశ్న 2/3" in r or "प्रश्न २/३" in r or "கேள்వి 2/3" in r: return ["✅ Yes", "❌ No"]
+    if "Question 3/3" in r or "प्रश्न 3/3" in r or "ಪ್ರಶ್ನೆ 3/3" in r or "প্রশ্ন ৩/৩" in r or "ప్రశ్న 3/3" in r or "प्रश्न ३/३" in r or "கேள்வி 3/3" in r: return ["✅ Yes", "❌ No"]
+    phase = 0
+    if "**Phase 4" in r or "चरण 4" in r or "ಹಂತ 4" in r or "ধাপ ৪" in r or "దశ 4" in r or "टप्पा ४" in r or "கட்டம் 4" in r: phase = 4
+    elif "**Phase 3" in r or "चरण 3" in r or "ಹಂತ 3" in r or "ধাপ ৩" in r or "దశ 3" in r or "टप्पा ३" in r or "கட்டம் 3" in r: phase = 3
+    elif "**Phase 2" in r or "चरण 2" in r or "ಹಂತ 2" in r or "ধাপ ২" in r or "దశ 2" in r or "टप्पा २" in r or "கட்டம் 2" in r: phase = 2
+    elif "**Phase 1" in r or "चरण 1" in r or "ಹಂತ 1" in r or "ধাপ ১" in r or "దశ 1" in r or "टप्पा १" in r or "கட்டம் 1" in r: phase = 1
+    if phase > 0: return _actions_for_phase(phase)
+    if "roadmap" in r.lower() or "റോഡ്മാപ്പ്" in r: return ["📍 Find Polling Booth", "✅ Check Eligibility", "🏠 Start Over"]
+    return _actions_for_phase(0)
 
 def fallback_logic(query: str, language: str = "English", history: list = None) -> Tuple[str, List[str]]:
     import re
-    if history is None:
-        history = []
+    if history is None: history = []
     q = query.lower().strip()
-    lang = TRANSLATIONS.get(language)
+    lang_data = TRANSLATIONS.get(language, {})
+    
+    # Help helpers to pick translated or default content
+    def get_phase_content(p): return lang_data.get("phases", {}).get(p, PHASE_CONTENT_EN[p])
+    def get_eligibility_q(s): return lang_data.get("eligibility", [])[s] if "eligibility" in lang_data and s < len(lang_data["eligibility"]) else ELIGIBILITY_QUESTIONS_EN[s]
+    def get_roadmap(): return lang_data.get("roadmap", ROADMAP_EN)
+    def get_timeline(): return lang_data.get("timeline", TIMELINE_EN)
 
-    # --- 1. Start Over ---
-    if "start over" in q:
-        msg = "👋 **Hi! I'm your Election Assistant.**\n\nI can guide you through the complete election process step-by-step.\n\nWhat would you like to learn about today?"
-        return msg, _actions_for_phase(0)
+    if "start over" in q: return lang_data.get("default", "Hi! How can I help?"), _actions_for_phase(0)
 
-    # --- 2. Direct phase targeting from button text (most reliable) ---
-    # Handles: "Yes, continue to Phase 2", "Back to Phase 1", "Phase 3", etc.
-    phase_match = re.search(r'phase (\d)', q)
+    # Phase targeting
+    phase_match = re.search(r'phase (\d)|चरण (\d)|ಹಂತ (\d)|ধাপ (\d)|దశ (\d)|टप्पा (\d)|கட்டம் (\d)', q)
     if phase_match:
-        target = int(phase_match.group(1))
-        if 1 <= target <= 4:
-            return PHASE_CONTENT[target], _actions_for_phase(target)
+        for group in phase_match.groups():
+            if group:
+                target = int(group)
+                if 1 <= target <= 4: return get_phase_content(target), _actions_for_phase(target)
 
-    # --- 3. Generic YES / continue — advance from history ---
     if _detect_yes(q):
         phase = _get_current_phase(history)
         next_phase = phase + 1
-        if 1 <= next_phase <= 4:
-            return PHASE_CONTENT[next_phase], _actions_for_phase(next_phase)
+        if 1 <= next_phase <= 4: return get_phase_content(next_phase), _actions_for_phase(next_phase)
 
-    # Eligibility check — sequential questions
-    if any(k in q for k in ["eligible", "eligibility", "can i vote", "am i eligible", "check eligibility"]):
+    if any(k in q for k in ["eligible", "eligibility", "can i vote", "पात्रता", "ಅರ್ಹತೆ", "যোগ্যতা", "అర్హత"]):
         step = _get_eligibility_step(history)
-        if step < len(ELIGIBILITY_QUESTIONS):
-            q_text = ELIGIBILITY_QUESTIONS[step]
-            if step == 0:
-                return q_text, ["✅ Yes, I am a citizen", "❌ No, I'm not a citizen"]
-            if step == 1:
-                return q_text, ["✅ Yes, I'm 18+", "❌ No, I'm under 18"]
-            if step == 2:
-                return q_text, ["✅ Yes, I'm registered", "❌ No, not yet"]
-        # All answered — evaluate
+        if step < 3: return get_eligibility_q(step), ["✅ Yes", "❌ No"]
         answers = [m.get("user_message", "").lower() for m in history[-3:]]
-        is_eligible = all("yes" in a or "✅" in a for a in answers)
-        if is_eligible:
-            result = "🎉 **Great news! You appear to be eligible to vote!**\n\nYou are a citizen, 18+, and registered. You're all set for Election Day!\n\nWould you like your personalised Voting Roadmap?"
-        else:
-            result = "ℹ️ **Based on your answers, you may not yet be fully eligible.**\n\nYou may need to:\n• Register to vote if you haven't already\n• Ensure you meet age and citizenship requirements\n\nWould you like help with voter registration?"
-        return result, ["🗺️ My Voting Roadmap", "📋 Register to Vote", "🏠 Start Over"]
+        eligible = all(any(y in a for y in ["yes", "✅", "हां", "ಹೌದು", "হ্যাঁ", "అవును", "हो", "ஆம்"]) for a in answers)
+        if eligible: return "🎉 **Eligible!** You're all set. Want your roadmap?", ["🗺️ Roadmap", "🏠 Start Over"]
+        else: return "ℹ️ **Check Requirements.** You may need to register. Help with registration?", ["📋 Register", "🏠 Start Over"]
 
-    # Roadmap — same rich content for all languages
-    if any(k in q for k in ["roadmap", "should i do", "what to do", "my voting roadmap"]):
-        roadmap = "**🗺️ Your Personalised Voting Roadmap:**\n\n✅ **Step 1:** Check your eligibility (18+ and a citizen)\n✅ **Step 2:** Register to vote before the deadline\n✅ **Step 3:** Find your polling location online\n✅ **Step 4:** Review candidates and ballot measures\n✅ **Step 5:** Go to your polling station on Election Day with your ID\n✅ **Step 6:** Cast your vote!\n\n🎯 You've got this!"
-        return roadmap, ["📍 Find My Polling Booth", "✅ Check Eligibility", "🏠 Start Over"]
+    if any(k in q for k in ["roadmap", "road map", "റോഡ്മാപ്പ്"]): return get_roadmap(), ["📍 Polling Booth", "🏠 Start Over"]
+    if "register" in q or "नोंदणी" in q or "ನೋಂದಣಿ" in q or "নিবন্ধন" in q: return get_phase_content(1), _actions_for_phase(1)
+    if any(k in q for k in ["timeline", "date", "when", "समयरेखा", "ಸಮಯ"]): return get_timeline(), ["🗳️ Process", "🏠 Start Over"]
+    if any(k in q for k in ["process", "step", "how to vote"]): return get_phase_content(1), _actions_for_phase(1)
 
-    # Register — full Phase 1 content for all languages
-    if "register" in q:
-        return PHASE_CONTENT[1], _actions_for_phase(1)
+    return lang_data.get("default", "👋 Hi! I'm your Election Assistant. What would you like to learn?"), _actions_for_phase(0)
 
-    # Timeline / dates — full content for all languages
-    if any(k in q for k in ["timeline", "date", "when", "deadline", "election timelines"]):
-        timeline = "📅 **Election Timelines vary by region.**\n\nGeneral phases:\n• **Voter Registration Deadline** — Usually 15-30 days before election\n• **Early Voting Period** — 1-2 weeks before Election Day\n• **Election Day** — The official voting date\n• **Results** — Announced within hours to days after polls close\n\nPlease check your local election authority website for exact dates."
-        return timeline, ["📋 Register to Vote", "🗳️ Voting Process", "🔄 Start Over"]
-
-    # Process / how to vote — start from Phase 1 for all languages
-    if any(k in q for k in ["process", "step", "how to vote", "voting process"]):
-        return PHASE_CONTENT[1], _actions_for_phase(1)
-
-    # Default greeting — use translated string if available
-    if lang:
-        return lang["default"], _actions_for_phase(0)
-    return "👋 **Hi! I'm your Election Assistant.**\n\nI can guide you through the complete election process step-by-step.\n\nWhat would you like to learn about today?", _actions_for_phase(0)
-
-
-
-def process_chat_message(
-    session_id: str,
-    user_message: str,
-    location: str = "General (No specific region)",
-    language: str = "English",
-) -> Tuple[str, bool, List[str]]:
-    # 1. Security Check
-    has_pii, warning_msg = scan_for_pii(user_message)
-    if has_pii:
-        return warning_msg, True, ["🔄 Ask a different question", "🏠 Start Over"]
-
-    # 2. Process with AI or Fallback
+def process_chat_message(session_id: str, user_message: str, location: str = "General", language: str = "English") -> Tuple[str, bool, List[str]]:
+    has_pii, warning = scan_for_pii(user_message)
+    if has_pii: return warning, True, ["🔄 Ask again", "🏠 Start Over"]
     global client
     if client is None:
-        gemini_api_key = os.environ.get("GEMINI_API_KEY", "")
-        if gemini_api_key:
-            try:
-                client = genai.Client(api_key=gemini_api_key)
-            except Exception as e:
-                logger.warning("Gemini client init failed: %s", e)
-
+        key = os.environ.get("GEMINI_API_KEY", "")
+        if key:
+            try: client = genai.Client(api_key=key)
+            except: pass
     history = get_chat_history(session_id)
-    response_text = ""
-    suggested_actions = []
-
-    try:
-        if client:
-            history_context = ""
-            for msg in history:
-                history_context += f"User: {msg['user_message']}\nAssistant: {msg['assistant_message']}\n"
-            context = (
-                f"{SYSTEM_PROMPT}\n\nUSER'S LOCATION: {location}\nUSER'S LANGUAGE: {language}\n\n"
-                f"CONVERSATION HISTORY:\n{history_context}\n\n"
-                f"Respond entirely in {language}. End with a clear question.\n\nUser: {user_message}"
-            )
-            response = client.models.generate_content(model="gemini-flash-latest", contents=context)
-            response_text = response.text
-            suggested_actions = get_suggested_actions(response_text)
-        else:
-            response_text, suggested_actions = fallback_logic(user_message, language, history)
-            if not client:
-                response_text += "\n\n*(Using local mode — add GEMINI_API_KEY for full AI responses)*"
-    except Exception as e:
-        logger.error("Gemini error: %s", e)
-        response_text, suggested_actions = fallback_logic(user_message, language, history)
-
-    save_chat_message(session_id, user_message, response_text)
-    return response_text, False, suggested_actions
+    if client:
+        try:
+            h_ctx = "\n".join([f"User: {m['user_message']}\nAsst: {m['assistant_message']}" for m in history])
+            ctx = f"{SYSTEM_PROMPT}\nLoc: {location}\nLang: {language}\nHistory:\n{h_ctx}\nRespond in {language}. End with a question.\nUser: {user_message}"
+            res = client.models.generate_content(model="gemini-flash-latest", contents=ctx)
+            text = res.text
+            save_chat_message(session_id, user_message, text)
+            return text, False, get_suggested_actions(text)
+        except: pass
+    text, actions = fallback_logic(user_message, language, history)
+    if not client: text += "\n\n*(Local mode)*"
+    save_chat_message(session_id, user_message, text)
+    return text, False, actions
