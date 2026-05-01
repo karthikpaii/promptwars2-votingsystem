@@ -269,7 +269,7 @@ def fallback_logic(query: str, language: str = "English", history: list = None) 
             return PHASE_CONTENT[target], _actions_for_phase(target)
 
     # --- 3. Generic YES / continue — advance from history ---
-    if _detect_yes(q) and language == "English":
+    if _detect_yes(q):
         phase = _get_current_phase(history)
         next_phase = phase + 1
         if 1 <= next_phase <= 4:
@@ -295,35 +295,29 @@ def fallback_logic(query: str, language: str = "English", history: list = None) 
             result = "ℹ️ **Based on your answers, you may not yet be fully eligible.**\n\nYou may need to:\n• Register to vote if you haven't already\n• Ensure you meet age and citizenship requirements\n\nWould you like help with voter registration?"
         return result, ["🗺️ My Voting Roadmap", "📋 Register to Vote", "🏠 Start Over"]
 
-    # Roadmap
+    # Roadmap — same rich content for all languages
     if any(k in q for k in ["roadmap", "should i do", "what to do", "my voting roadmap"]):
-        if lang:
-            return lang["roadmap"], ["📍 Find My Polling Booth", "✅ Check Eligibility", "🏠 Start Over"]
         roadmap = "**🗺️ Your Personalised Voting Roadmap:**\n\n✅ **Step 1:** Check your eligibility (18+ and a citizen)\n✅ **Step 2:** Register to vote before the deadline\n✅ **Step 3:** Find your polling location online\n✅ **Step 4:** Review candidates and ballot measures\n✅ **Step 5:** Go to your polling station on Election Day with your ID\n✅ **Step 6:** Cast your vote!\n\n🎯 You've got this!"
         return roadmap, ["📍 Find My Polling Booth", "✅ Check Eligibility", "🏠 Start Over"]
 
-    # Register
+    # Register — full Phase 1 content for all languages
     if "register" in q:
-        if lang:
-            return lang["register"], ["✅ Yes, continue!", "🔄 Start Over"]
         return PHASE_CONTENT[1], _actions_for_phase(1)
 
-    # Timeline / dates
-    if any(k in q for k in ["timeline", "date", "when", "deadline"]):
-        if lang:
-            return lang["timeline"], ["📋 Register to Vote", "🗳️ Voting Process", "🔄 Start Over"]
-        return "📅 **Election Timelines vary by region.**\n\nGeneral phases:\n• **Voter Registration Deadline** — Usually 15-30 days before election\n• **Early Voting Period** — 1-2 weeks before Election Day\n• **Election Day** — The official voting date\n• **Results** — Announced within hours to days after polls close\n\nPlease check your local election authority website for exact dates.", ["📋 Register to Vote", "🗳️ Voting Process", "🔄 Start Over"]
+    # Timeline / dates — full content for all languages
+    if any(k in q for k in ["timeline", "date", "when", "deadline", "election timelines"]):
+        timeline = "📅 **Election Timelines vary by region.**\n\nGeneral phases:\n• **Voter Registration Deadline** — Usually 15-30 days before election\n• **Early Voting Period** — 1-2 weeks before Election Day\n• **Election Day** — The official voting date\n• **Results** — Announced within hours to days after polls close\n\nPlease check your local election authority website for exact dates."
+        return timeline, ["📋 Register to Vote", "🗳️ Voting Process", "🔄 Start Over"]
 
-    # Process / how to vote
+    # Process / how to vote — start from Phase 1 for all languages
     if any(k in q for k in ["process", "step", "how to vote", "voting process"]):
-        if lang:
-            return lang["process"], ["✅ Yes, continue!", "🔄 Start Over"]
         return PHASE_CONTENT[1], _actions_for_phase(1)
 
-    # Default
+    # Default greeting — use translated string if available
     if lang:
         return lang["default"], _actions_for_phase(0)
     return "👋 **Hi! I'm your Election Assistant.**\n\nI can guide you through the complete election process step-by-step.\n\nWhat would you like to learn about today?", _actions_for_phase(0)
+
 
 
 def process_chat_message(
