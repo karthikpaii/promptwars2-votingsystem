@@ -175,7 +175,10 @@ def fallback_logic(
     lang_data = TRANSLATIONS.get(language, TRANSLATIONS.get("English", {}))
 
     def get_phase_content(p: int) -> str:
-        # Try language-specific phase, then English phase, then generic error
+        """
+        Helper to fetch content for a specific phase in the target language.
+        Falls back to English if the local translation is incomplete.
+        """
         phases = lang_data.get("phases", {})
         return phases.get(
             str(p), TRANSLATIONS.get("English", {}).get("phases", {}).get(str(p), "Phase content missing.")
