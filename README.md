@@ -12,7 +12,7 @@
 
 ## 🌐 Live Demo
 
-**👉 [https://election-assistant-155727688265.us-central1.run.app](https://election-assistant-155727688265.us-central1.run.app)**
+**👉 https://election-assistant-155727688265.us-central1.run.app/**
 
 ---
 
@@ -83,7 +83,7 @@ User Message
 
 ### Prerequisites
 - Python 3.10+
-- A Google Gemini API Key ([Get one free here](https://ai.google.dev/))
+- A Google Gemini API Key 
 
 ### Setup
 
@@ -148,6 +148,8 @@ Voting System/
 ```
 
 ---
+## My Rank
+<img width="1198" height="405" alt="Screenshot 2026-05-03 213424" src="https://github.com/user-attachments/assets/17c7d468-fdd0-425e-9222-677afce94924" />
 
 ## 🌏 Supported Languages
 
@@ -176,7 +178,3 @@ Voting System/
 **Karthik Pai** — Built with ❤️ and [Antigravity](https://antigravity.dev) for the **Google Promptwars Hackathon 2026**
 
 ---
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
