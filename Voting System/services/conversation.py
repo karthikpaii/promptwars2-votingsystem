@@ -3,6 +3,7 @@ import logging
 import json
 import re
 from typing import Tuple, List, Dict, Any, Optional
+from functools import lru_cache
 from google import genai
 from services.security import scan_for_pii
 from services.db import save_chat_message, get_chat_history
@@ -27,14 +28,18 @@ NEVER ask for SSN, Aadhaar, passwords.
 Always respond in the user's selected language.
 After every response end with a clear question so the user knows what to do next."""
 
-# Load translations from JSON
-TRANSLATIONS_PATH = os.path.join(os.path.dirname(__file__), "translations.json")
-try:
-    with open(TRANSLATIONS_PATH, "r", encoding="utf-8") as f:
-        TRANSLATIONS = json.load(f)
-except Exception as e:
-    logger.error("Failed to load translations: %s", e)
-    TRANSLATIONS = {}
+@lru_cache(maxsize=1)
+def load_translations() -> Dict[str, Any]:
+    """Loads and caches election terminology translations from JSON."""
+    path = os.path.join(os.path.dirname(__file__), "translations.json")
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as e:
+        logger.error("Failed to load translations: %s", e)
+        return {}
+
+TRANSLATIONS = load_translations()
 
 # Compiled regex for efficiency
 _PHASE_REGEX = re.compile(r"phase (\d)|चरण (\d)|ಹಂತ (\d)|ধাপ (\d)|దశ (\d)|टप्पा (\d)|கட்டம் (\d)", re.IGNORECASE)

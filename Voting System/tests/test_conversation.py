@@ -107,6 +107,27 @@ class TestProcessChatMessage(unittest.TestCase):
         messages = db_module.db.get_messages(sid)
         self.assertEqual(len(messages), 2)
 
+    def test_response_caching(self):
+        """Identical queries should return cached responses for efficiency."""
+        from services.conversation import _RESPONSE_CACHE
+        _RESPONSE_CACHE.clear()
+        
+        sid = "cache_test"
+        msg = "Is voting important?"
+        
+        # First call (simulated)
+        with patch('services.conversation.client') as mock_client:
+            mock_client.models.generate_content.return_value.text = "Yes, very."
+            res1, _, _ = process_chat_message(sid, msg, "USA", "English")
+            self.assertEqual(res1, "Yes, very.")
+            self.assertEqual(mock_client.models.generate_content.call_count, 1)
+        
+        # Second call (should be cached)
+        with patch('services.conversation.client') as mock_client:
+            res2, _, _ = process_chat_message(sid, msg, "USA", "English")
+            self.assertEqual(res2, "Yes, very.")
+            self.assertEqual(mock_client.models.generate_content.call_count, 0)
+
 
 if __name__ == '__main__':
     unittest.main()

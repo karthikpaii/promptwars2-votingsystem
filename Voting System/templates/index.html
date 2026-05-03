@@ -9,7 +9,8 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗳️</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body data-theme="light">
+    <a href="#chat-form" class="sr-only" style="background: #2563eb; color: white; padding: 10px; z-index: 9999;">Skip to message input</a>
     <div class="container">
         <div class="chat-header">
             <div class="avatar">
@@ -108,9 +109,9 @@
             <div class="chat-wrapper" id="chat-wrapper">
                 <div class="chat-messages" id="chat-messages" role="log" aria-live="polite" aria-label="Chat messages" aria-relevant="additions">
             <div class="message assistant-message">
-                <p>Hi! I'm your Election Assistant. I can guide you through the election process step-by-step.</p>
+                <p>Hi! I'm your **Election Assistant**. I can guide you through the election process step-by-step.</p>
                 <p>I can help you understand:</p>
-                <ul>
+                <ul role="list">
                     <li>How to register to vote</li>
                     <li>Election timelines</li>
                     <li>The voting process</li>
@@ -145,6 +146,6 @@
         </div> <!-- End main-content -->
     </div> <!-- End container -->
 
-    <script src="/static/app.js"></script>
+    <script src="/static/app.js?v=2"></script>
 </body>
 </html>
