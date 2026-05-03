@@ -92,6 +92,52 @@ document.addEventListener('DOMContentLoaded', () => {
         } finally {
             setInputEnabled(true);
             chatInput.focus();
+            
+            // Show/Hide export roadmap button if content mentions roadmap
+            const lastMsg = chatMessages.lastElementChild?.textContent || "";
+            if (lastMsg.toLowerCase().includes("roadmap") || lastMsg.toLowerCase().includes("road map")) {
+                showExportButton();
+            }
+        }
+    }
+
+    function showExportButton() {
+        if (document.getElementById('export-roadmap-btn')) return;
+        
+        const btn = document.createElement('button');
+        btn.id = 'export-roadmap-btn';
+        btn.className = 'dynamic-action-btn';
+        btn.style.borderColor = '#16a34a';
+        btn.style.color = '#16a34a';
+        btn.innerHTML = '📥 Download My Roadmap';
+        btn.addEventListener('click', exportRoadmap);
+        
+        const container = document.createElement('div');
+        container.className = 'dynamic-actions';
+        container.appendChild(btn);
+        chatMessages.appendChild(container);
+        scrollToBottom();
+    }
+
+    async function exportRoadmap() {
+        try {
+            const userLocation = document.getElementById('user-location').value;
+            const response = await fetch('/api/export_roadmap', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ session_id: sessionId, location: userLocation }),
+            });
+            const data = await response.json();
+            if (data.status === 'success') {
+                const blob = new Blob([data.content], { type: 'text/plain' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `Voting_Roadmap_${userLocation.replace(/ /g, '_')}.txt`;
+                a.click();
+            }
+        } catch (err) {
+            console.error("Export failed:", err);
         }
     }
 

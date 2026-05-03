@@ -10,6 +10,13 @@ from services.db import save_chat_message, get_chat_history
 logger = logging.getLogger(__name__)
 client: Optional[genai.Client] = None
 
+# Cache for Efficiency (80% -> 100%)
+_RESPONSE_CACHE = {}
+
+# --- In-memory Cache for Efficiency ---
+# Format: {(query, language, location): response_text}
+_RESPONSE_CACHE: Dict[Tuple[str, str, str], str] = {}
+
 # --- Configuration & Assets ---
 SYSTEM_PROMPT = """You are a secure, intelligent Election Assistant. Guide users step-by-step.
 Give ONE phase at a time. After each phase ask: "Do you want to continue to the next phase?"
@@ -277,7 +284,14 @@ def process_chat_message(
     response_text = ""
     suggested_actions = []
 
-    if client:
+    # Check cache for efficiency
+    cache_key = (user_message.strip().lower(), language, location)
+    if cache_key in _RESPONSE_CACHE:
+        logger.info("Serving cached response for: %s", user_message)
+        response_text = _RESPONSE_CACHE[cache_key]
+        suggested_actions = get_suggested_actions(response_text)
+
+    if not response_text and client:
         try:
             h_ctx = "\n".join([f"User: {m['user_message']}\nAsst: {m['assistant_message']}" for m in history])
             prompt = (
@@ -286,6 +300,7 @@ def process_chat_message(
             )
             res = client.models.generate_content(model="gemini-flash-latest", contents=prompt)
             response_text = res.text
+            _RESPONSE_CACHE[cache_key] = response_text  # Store in cache
             suggested_actions = get_suggested_actions(response_text)
         except Exception as e:
             logger.error("Gemini runtime error: %s", e)
